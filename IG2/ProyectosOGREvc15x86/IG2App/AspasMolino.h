@@ -9,12 +9,21 @@ private:
 	Ogre::SceneNode* aspa = nullptr;
 	Ogre::SceneNode* tablero = nullptr;
 	Ogre::SceneNode* adorno = nullptr;
+	Ogre::SceneNode* cilindroNode = nullptr;
 	int numAspas = 0;
 	Aspa** arrayAspas;
 	Ogre::SceneManager* mSM;
+	bool metido = false;
 public:
 	AspasMolino(Ogre::SceneNode* asp, int num) :aspasNode(asp), numAspas(num) {
 		mSM = aspasNode->getCreator();
+		//creacion del cilindro central
+		cilindroNode = mSM->getSceneNode("aspas")->createChildSceneNode("cilindro");
+		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
+		cilindroNode->attachObject(cil);
+		cilindroNode->setScale(25.0, 8.0, 25.0);
+		cilindroNode->pitch(Ogre::Degree(90));
+		//creacion de las aspas
 		arrayAspas = new Aspa*[num];
 		for (int i = 0; i < numAspas; i++) {
 			string n = "tablero_" + to_string(i);
@@ -25,8 +34,9 @@ public:
 			adorno = mSM->getSceneNode("aspa_" + to_string(i))->createChildSceneNode(n2);
 			arrayAspas[i] = new Aspa(aspa, tablero, adorno);
 		}
+		//colocacion aspas y adornos
 		float angle = 0;
-		float angleToAdd = 360 / 12;  //30 grados
+		float angleToAdd = 360 / numAspas;  //30 grados
 		//Distancia con la que se multiplica el seno y coseno
 		float distance = 220;
 		for (int j = 0; j < numAspas; j++) {
@@ -38,7 +48,21 @@ public:
 	};
 
 	void keyPressed() {
-		aspasNode->roll(Ogre::Degree(3));
+		aspasNode->roll(Ogre::Degree(10));
+	};
+
+	void cilindroHaciaDentro() {
+		if (!metido)
+		{
+			cilindroNode->translate(0, 0, -40);
+			metido = true;
+
+		}
+		else
+		{
+			cilindroNode->translate(0, 0, 40);
+			metido = false;
+		}
 	}
 };
 

@@ -5,8 +5,7 @@
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
 #include <string>
-#include "AspasMolino.h"
-
+#include "Molino.h"
 using namespace std;
 using namespace Ogre;
 
@@ -17,7 +16,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     getRoot()->queueEndRendering();
   }
   else if (evt.keysym.sym == SDLK_g) {
-	  molino->keyPressed();
+	  molinete->keyPressed();
+  }
+  else if (evt.keysym.sym == SDLK_c) {
+	  molinete->cilindroHaciaDentro();
   }
   else if (evt.keysym.sym == SDLK_h) {
 	  Spheres->roll(Ogre::Degree(-3));
@@ -166,8 +168,9 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region aspa
-  aspasN = mSM->getRootSceneNode()->createChildSceneNode("aspas");
-  molino = new AspasMolino(aspasN, 12);
+  //aspasN = mSM->getRootSceneNode()->createChildSceneNode("aspas");
+ // molino = new AspasMolino(aspasN, 6);
+  molinete = new Molino(mSM, 6);
 
 #pragma endregion
 
