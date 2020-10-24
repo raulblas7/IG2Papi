@@ -64,5 +64,14 @@ public:
 			metido = false;
 		}
 	}
+
+	void aspasRotate() {
+		//aspasNode->translate(Ogre::Math::Cos(Ogre::Radian(0.1))* 20, 1, Ogre::Math::Sin(Ogre::Radian(0.1)) * 20);
+		//aspasNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(0.1),Ogre::Node::TS_WORLD);
+
+		
+		aspasNode->translate(10, 0, 0);
+		aspasNode->rotate(Ogre::Quaternion(Ogre::Degree(10), Ogre::Vector3(1, 0, 0)), Ogre::Node::TransformSpace::TS_WORLD);
+	};
 };
 

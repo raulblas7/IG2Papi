@@ -37,5 +37,9 @@ public:
 	void cilindroHaciaDentro() {
 		aspas->cilindroHaciaDentro();
 	};
+
+	void aspasRotando() {
+		aspas->aspasRotate();
+	};
 };
 

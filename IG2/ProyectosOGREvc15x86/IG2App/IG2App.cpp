@@ -22,7 +22,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	  molinete->cilindroHaciaDentro();
   }
   else if (evt.keysym.sym == SDLK_h) {
-	  Spheres->roll(Ogre::Degree(-3));
+	  molinete->aspasRotando();
   }
   
   return true;
