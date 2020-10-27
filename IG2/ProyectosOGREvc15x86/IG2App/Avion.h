@@ -63,7 +63,10 @@ public:
 		heliceNode2->translate(300, 0, 100);
 
 	}
-	~Avion() {};
+	~Avion() {
+		delete helice1; helice1 = nullptr;
+		delete helice2; helice2 = nullptr;
+	};
 
 	void keyPressed() {
 		helice1->keyPressed();

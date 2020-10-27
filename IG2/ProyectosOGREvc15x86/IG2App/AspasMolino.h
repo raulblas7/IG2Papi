@@ -69,6 +69,9 @@ public:
 			angle += angleToAdd;
 		}
 	};
+	~AspasMolino() { delete[] arrayAspas;
+			arrayAspas = nullptr;
+	};
 
 	void keyPressed() {
 		aspasNode->roll(Ogre::Degree(10));

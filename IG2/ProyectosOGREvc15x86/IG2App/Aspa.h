@@ -22,7 +22,6 @@ public:
 		tableroNode->setScale(5.0, 0.8, 0.1);
 		cilindroNode->setScale(3.0, 5.0, 3.0);
 	};
-
 	Ogre::SceneNode* getTablero() { return tableroNode; };
 	Ogre::SceneNode* getAdorno() { return cilindroNode; };
 };

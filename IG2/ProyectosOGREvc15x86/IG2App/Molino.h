@@ -39,7 +39,7 @@ public:
 		aspasN->translate(0, 350, 180);
 		sphereNode->translate(0, 350, 0);
 	}
-
+	~Molino() { delete aspas; aspas = nullptr; };
 	void keyPressed() {
 		aspas->keyPressed();
 	};

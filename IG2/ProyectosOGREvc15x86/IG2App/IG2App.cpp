@@ -54,7 +54,8 @@ void IG2App::shutdown()
 
   delete mTrayMgr;  mTrayMgr = nullptr;
   delete mCamMgr; mCamMgr = nullptr;
-  
+  delete avioncete; avioncete = nullptr;
+  delete molinete; molinete = nullptr;
   // do not forget to call the base 
   IG2ApplicationContext::shutdown();
 }
@@ -185,7 +186,7 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region Molino
-  //molinete = new Molino(mSM, 6,1);
+  //molinete = new Molino(mSM, 6);
 
 #pragma endregion
 
