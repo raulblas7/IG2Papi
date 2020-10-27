@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="Aspa.h" />
     <ClInclude Include="AspasMolino.h" />
+    <ClInclude Include="Avion.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="Molino.h" />
@@ -128,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Aspa.cpp" />
     <ClCompile Include="AspasMolino.cpp" />
+    <ClCompile Include="Avion.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />

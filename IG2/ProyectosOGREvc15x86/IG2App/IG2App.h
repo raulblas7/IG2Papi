@@ -6,6 +6,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
 #include <OgreCameraMan.h>
+class Avion;
 class Molino;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
@@ -21,6 +22,7 @@ protected:
 
   virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
   
+  Avion* avioncete = nullptr;
   Molino* molinete = nullptr;
   Ogre::SceneManager* mSM = nullptr;
   OgreBites::TrayManager* mTrayMgr = nullptr;    
@@ -28,15 +30,12 @@ protected:
   Ogre::SceneNode* mCamNode = nullptr;
   Ogre::SceneNode* mSinbadNode = nullptr;
   Ogre::SceneNode* mBathNode = nullptr;
+  Ogre::SceneNode* Tierra;
+  Ogre::SceneNode* Sol;
+  Ogre::SceneNode* Luna;
+  Ogre::SceneNode* Ficticio;
   Ogre::SceneNode* mHourNode[12];
   Ogre::SceneNode* Clock;
-  Ogre::SceneNode* aspaNode;
-  Ogre::SceneNode* aspasN;
-  Ogre::SceneNode* aspas[12];
-  Ogre::SceneNode* tableros[12];
-  Ogre::SceneNode* adornos[12];
-  Ogre::SceneNode* tableroNode;
-  Ogre::SceneNode* cilindroNode;
   Ogre::SceneNode* Spheres;
   Ogre::SceneNode* mMinuteNode = nullptr;
   Ogre::SceneNode* mHoursNode = nullptr;

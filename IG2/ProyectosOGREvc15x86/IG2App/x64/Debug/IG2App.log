@@ -484,6 +484,10 @@ C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Aspa.h(2
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(39,20): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(28,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(83,58): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(143,69): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(164,36): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(165,36): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(166,40): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
   Molino.cpp
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'

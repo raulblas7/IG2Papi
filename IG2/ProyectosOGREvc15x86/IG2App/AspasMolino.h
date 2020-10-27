@@ -18,7 +18,12 @@ public:
 	AspasMolino(Ogre::SceneNode* asp, int num) :aspasNode(asp), numAspas(num) {
 		mSM = aspasNode->getCreator();
 		//creacion del cilindro central
-		cilindroNode = mSM->getSceneNode("aspas")->createChildSceneNode("cilindro");
+		string name = "cilindro";
+		if (mSM->getSceneNode("cilindro")->getName()!="")
+		{
+			name = "cilindro2";
+		}
+		cilindroNode = mSM->getSceneNode(aspasNode->getName())->createChildSceneNode(name);
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
 		cilindroNode->attachObject(cil);
 		cilindroNode->setScale(25.0, 8.0, 25.0);
@@ -28,10 +33,10 @@ public:
 		for (int i = 0; i < numAspas; i++) {
 			string n = "tablero_" + to_string(i);
 			string n2 = "adorno_" + to_string(i);
-			string n3 = "aspa_" + to_string(i);
-			aspa = mSM->getSceneNode("aspas")->createChildSceneNode(n3);
-			tablero = mSM->getSceneNode("aspa_" + to_string(i))->createChildSceneNode(n);
-			adorno = mSM->getSceneNode("aspa_" + to_string(i))->createChildSceneNode(n2);
+			string n3 = aspasNode->getName() + "_" + to_string(i);
+			aspa = mSM->getSceneNode(aspasNode->getName())->createChildSceneNode(n3);
+			tablero = mSM->getSceneNode(aspasNode->getName() + "_" + to_string(i))->createChildSceneNode(n);
+			adorno = mSM->getSceneNode(aspasNode->getName() + "_" + to_string(i))->createChildSceneNode(n2);
 			arrayAspas[i] = new Aspa(aspa, tablero, adorno);
 		}
 		//colocacion aspas y adornos
@@ -64,14 +69,5 @@ public:
 			metido = false;
 		}
 	}
-
-	void aspasRotate() {
-		//aspasNode->translate(Ogre::Math::Cos(Ogre::Radian(0.1))* 20, 1, Ogre::Math::Sin(Ogre::Radian(0.1)) * 20);
-		//aspasNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(0.1),Ogre::Node::TS_WORLD);
-
-		
-		aspasNode->translate(10, 0, 0);
-		aspasNode->rotate(Ogre::Quaternion(Ogre::Degree(10), Ogre::Vector3(1, 0, 0)), Ogre::Node::TransformSpace::TS_WORLD);
-	};
 };
 

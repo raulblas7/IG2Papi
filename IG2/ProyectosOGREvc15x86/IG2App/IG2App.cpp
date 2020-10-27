@@ -6,6 +6,8 @@
 #include <OgreMeshManager.h>
 #include <string>
 #include "Molino.h"
+#include "Avion.h"
+
 using namespace std;
 using namespace Ogre;
 
@@ -22,9 +24,19 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	  molinete->cilindroHaciaDentro();
   }
   else if (evt.keysym.sym == SDLK_h) {
-	  molinete->aspasRotando();
+	  //molinete->aspasRotando();
+	  /*mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
+	  mSecondsNode->roll(Ogre::Degree(-3));
+	  mSecondsNode->translate(0, -50, -50, Ogre::Node::TS_LOCAL);*/
   }
-  
+  else if (evt.keysym.sym == SDLK_j) {
+	  Tierra->translate(-350, 0, -350, Ogre::Node::TS_LOCAL);
+	  Tierra->yaw(Ogre::Degree(-3));
+	  Tierra->translate(350, 0, 350, Ogre::Node::TS_LOCAL);
+
+	  Ficticio->yaw(Ogre::Degree(10));
+  }
+
   return true;
 }
 
@@ -154,27 +166,51 @@ void IG2App::setupScene(void)
   //mMinuteNode->attachObject(m);
   //mSecondsNode->attachObject(s);
 
-  //mMinuteNode->setPosition(0, 100, 0);
-  //mHoursNode->setPosition(30, 5, 0);
-  //mSecondsNode->setPosition(0, -100, 0);
+  //mMinuteNode->translate(0, 100, 0);
+  //mHoursNode->translate(60, 5, 0);
+  //mSecondsNode->translate(-50, -50, 0);
 
   //mHoursNode->roll(Ogre::Degree(-90));
-  //mSecondsNode->roll(Ogre::Degree(-180));
+  //mSecondsNode->roll(Ogre::Degree(-45));
 
-  //mHoursNode->setScale(0.25, 1, 0.1);
-  //mMinuteNode->setScale(0.1, 2, 0.1);
-  //mSecondsNode->setScale(0.05, 2.5, 0.1);
-
-#pragma endregion
-
-#pragma region aspa
-  //aspasN = mSM->getRootSceneNode()->createChildSceneNode("aspas");
- // molino = new AspasMolino(aspasN, 6);
-  molinete = new Molino(mSM, 6);
+  //mHoursNode->setScale(0.1, 1.5, 0.1);
+  //mMinuteNode->setScale(0.05, 2, 0.05);
+  //mSecondsNode->setScale(0.02, 2.0, 0.02);
 
 #pragma endregion
 
-  
+#pragma region Molino
+  //molinete = new Molino(mSM, 6);
+
+#pragma endregion
+
+#pragma region TierraySol
+
+	  /*Sol = mSM->getRootSceneNode()->createChildSceneNode("sol");
+	  Tierra = mSM->getRootSceneNode()->createChildSceneNode("tierra");
+	  Ficticio = mSM->getSceneNode("tierra")->createChildSceneNode("fict");
+	  Luna = mSM->getSceneNode("fict")->createChildSceneNode("luna");
+
+
+	   Ogre::Entity* solito = mSM->createEntity("sphere.mesh");
+	   Sol->attachObject(solito);
+	   Ogre::Entity* tierraplana = mSM->createEntity("sphere.mesh");
+	   Tierra->attachObject(tierraplana);
+	   Ogre::Entity* lunalunera = mSM->createEntity("sphere.mesh");
+	   Luna->attachObject(lunalunera);
+
+	   Sol->setScale(2, 2, 2);
+	   Tierra->setScale(1, 1, 1);
+	   Luna->setScale(0.3, 0.3, 0.3);
+	   Tierra->translate(350, 0, 350);
+	   Luna->translate(90, 0, 120);*/
+
+#pragma endregion
+
+#pragma region avion
+	avioncete = new Avion(mSM);
+#pragma endregion
+
   //mSinbadNode->setScale(20, 20, 20);
   //mSinbadNode->yaw(Ogre::Degree(-45));
   //mSinbadNode->showBoundingBox(true);
