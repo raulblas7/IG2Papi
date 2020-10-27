@@ -42,8 +42,8 @@ public:
 		Ogre::Entity* piloto = mSM->createEntity("ninja.mesh");
 		pilotoNode->attachObject(piloto);
 
-		helice1 = new AspasMolino(heliceNode1, 6);
-		helice2 = new AspasMolino(heliceNode2, 6);
+		helice1 = new AspasMolino(heliceNode1, 6,1);
+		helice2 = new AspasMolino(heliceNode2, 6,2);
 
 		alaINode->translate(-300, 0, 0);
 		alaDNode->translate(300, 0, 0);
@@ -59,8 +59,14 @@ public:
 		heliceNode1->setScale(0.3, 0.3, 0.3);
 		heliceNode1->translate(-300, 0, 100);
 
+		heliceNode2->setScale(0.3, 0.3, 0.3);
+		heliceNode2->translate(300, 0, 100);
+
 	}
 	~Avion() {};
-
+	void keyPressed() {
+		heliceNode1->roll(Ogre::Degree(10));
+		heliceNode2->roll(Ogre::Degree(10));
+	};
 };
 

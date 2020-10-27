@@ -18,7 +18,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     getRoot()->queueEndRendering();
   }
   else if (evt.keysym.sym == SDLK_g) {
-	  molinete->keyPressed();
+	  avioncete->keyPressed();
   }
   else if (evt.keysym.sym == SDLK_c) {
 	  molinete->cilindroHaciaDentro();
@@ -180,7 +180,7 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region Molino
-  //molinete = new Molino(mSM, 6);
+  //molinete = new Molino(mSM, 6,1);
 
 #pragma endregion
 

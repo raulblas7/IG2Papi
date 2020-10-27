@@ -15,14 +15,11 @@ private:
 	Ogre::SceneManager* mSM;
 	bool metido = false;
 public:
-	AspasMolino(Ogre::SceneNode* asp, int num) :aspasNode(asp), numAspas(num) {
+	AspasMolino(Ogre::SceneNode* asp, int num,int numAspa) :aspasNode(asp), numAspas(num) {
 		mSM = aspasNode->getCreator();
 		//creacion del cilindro central
-		string name = "cilindro";
-		if (mSM->getSceneNode("cilindro")->getName()!="")
-		{
-			name = "cilindro2";
-		}
+		string name = "cilindro"+to_string(numAspa);
+		
 		cilindroNode = mSM->getSceneNode(aspasNode->getName())->createChildSceneNode(name);
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
 		cilindroNode->attachObject(cil);
