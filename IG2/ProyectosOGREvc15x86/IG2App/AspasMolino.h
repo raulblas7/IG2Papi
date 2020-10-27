@@ -15,12 +15,21 @@ private:
 	Ogre::SceneManager* mSM;
 	bool metido = false;
 public:
-	AspasMolino(Ogre::SceneNode* asp, int num,int numAspa) :aspasNode(asp), numAspas(num) {
+	AspasMolino(Ogre::SceneNode* asp, int num) :aspasNode(asp), numAspas(num) {
 		mSM = aspasNode->getCreator();
 		//creacion del cilindro central
-		string name = "cilindro"+to_string(numAspa);
+		string aspasName = aspasNode->getName();
+		string cadaaspa = "aspa_";
+		if (aspasName == "helice1") {
+			cilindroNode = mSM->getSceneNode(aspasName)->createChildSceneNode("cilindro1");
+			cadaaspa = "aspahel1_";
+		}
+		else if (aspasName == "helice2") {
+			cilindroNode = mSM->getSceneNode(aspasName)->createChildSceneNode("cilindro2");
+			cadaaspa = "aspahel2_";
+		}
+		else cilindroNode = mSM->getSceneNode(aspasName)->createChildSceneNode("cilindro");
 		
-		cilindroNode = mSM->getSceneNode(aspasNode->getName())->createChildSceneNode(name);
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
 		cilindroNode->attachObject(cil);
 		cilindroNode->setScale(25.0, 8.0, 25.0);
@@ -28,12 +37,24 @@ public:
 		//creacion de las aspas
 		arrayAspas = new Aspa*[num];
 		for (int i = 0; i < numAspas; i++) {
-			string n = "tablero_" + to_string(i);
-			string n2 = "adorno_" + to_string(i);
-			string n3 = aspasNode->getName() + "_" + to_string(i);
-			aspa = mSM->getSceneNode(aspasNode->getName())->createChildSceneNode(n3);
-			tablero = mSM->getSceneNode(aspasNode->getName() + "_" + to_string(i))->createChildSceneNode(n);
-			adorno = mSM->getSceneNode(aspasNode->getName() + "_" + to_string(i))->createChildSceneNode(n2);
+			string n;
+			string n2;
+			string n3;
+			if (aspasName == "helice1") {
+				n = "tablerohel1_" + to_string(i);
+				n2 = "adornohel1_" + to_string(i);
+				n3 = "aspahel1_" + to_string(i);
+			}
+			else if (aspasName == "helice2") {
+				n = "tablerohel2_" + to_string(i);
+				n2 = "adornohel2_" + to_string(i);
+				n3 = "aspahel2_" + to_string(i);
+			}
+			else { n = "tablero_" + to_string(i); n2 = "adorno_" + to_string(i); n3 = "aspa_" + to_string(i);
+			}
+			aspa = mSM->getSceneNode(aspasName)->createChildSceneNode(n3);
+			tablero = mSM->getSceneNode(n3)->createChildSceneNode(n);
+			adorno = mSM->getSceneNode(n3)->createChildSceneNode(n2);
 			arrayAspas[i] = new Aspa(aspa, tablero, adorno);
 		}
 		//colocacion aspas y adornos

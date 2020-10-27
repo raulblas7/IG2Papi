@@ -21,20 +21,25 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	  avioncete->keyPressed();
   }
   else if (evt.keysym.sym == SDLK_c) {
-	  molinete->cilindroHaciaDentro();
+	  //evento que hace el que el cilindro central de las aspas del molino se mete hacia adentro y salga, descomentar aqui y la region Molino de la linea 187
+	  //molinete->cilindroHaciaDentro();
   }
   else if (evt.keysym.sym == SDLK_h) {
+	  //evento para que las aspas roten alrededor del techo descomentar aqui y la region Molino de la linea 187
 	  //molinete->aspasRotando();
+
+	  //evento para que el segundero del reloj rote en sentido horario, descomentar aqui y la region reloj de la linea 138
 	  /*mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
 	  mSecondsNode->roll(Ogre::Degree(-3));
 	  mSecondsNode->translate(0, -50, -50, Ogre::Node::TS_LOCAL);*/
   }
   else if (evt.keysym.sym == SDLK_j) {
-	  Tierra->translate(-350, 0, -350, Ogre::Node::TS_LOCAL);
+	  //evento de movimiento de rotacion de la tierra alrededor del sol y de la luna alrededor de la tierra, descomentar aqui y region TierraySol linea 192
+	  /*Tierra->translate(-350, 0, -350, Ogre::Node::TS_LOCAL);
 	  Tierra->yaw(Ogre::Degree(-3));
 	  Tierra->translate(350, 0, 350, Ogre::Node::TS_LOCAL);
 
-	  Ficticio->yaw(Ogre::Degree(10));
+	  Ficticio->yaw(Ogre::Degree(10))*/;
   }
 
   return true;
@@ -112,7 +117,7 @@ void IG2App::setupScene(void)
   //------------------------------------------------------------------------
 
   // finally something to render
-  //escenas sinbad y baño
+
 #pragma region sinbadybaño
   /*Ogre::Entity* ent = mSM->createEntity("RomanBathLower.mesh");
   Ogre::Entity* ent1 = mSM->createEntity("RomanBathUpper.mesh");
