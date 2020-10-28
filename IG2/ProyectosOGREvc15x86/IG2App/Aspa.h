@@ -1,20 +1,18 @@
 #pragma once
-#include <OgreInput.h>
-#include <OgreSceneNode.h>
-#include <OgreSceneManager.h>
+#include "EntidadIG.h"
 #include <OgreEntity.h>
 
-class Aspa
+class Aspa : public EntidadIG
 {
 private:
-	Ogre::SceneNode* aspaNode;
+	//Ogre::SceneNode* aspaNode;
 	Ogre::SceneNode* tableroNode;
 	Ogre::SceneNode* cilindroNode;
 	Ogre::SceneManager* mSM;
 public:
-	Aspa(Ogre::SceneNode* aspaNode_, Ogre::SceneNode* tableroNode_, Ogre::SceneNode* cilindroNode_) :aspaNode(aspaNode_),
+	Aspa(Ogre::SceneNode* aspaNode_, Ogre::SceneNode* tableroNode_, Ogre::SceneNode* cilindroNode_) : EntidadIG(aspaNode_),
 		tableroNode(tableroNode_), cilindroNode(cilindroNode_) {
-		mSM = aspaNode->getCreator();
+		mSM = mNode->getCreator();
 		Ogre::Entity* tab = mSM->createEntity("cube.mesh");
 		Ogre::Entity* ador = mSM->createEntity("Barrel.mesh");
 		tableroNode->attachObject(tab);

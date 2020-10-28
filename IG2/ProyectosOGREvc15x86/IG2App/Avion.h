@@ -1,10 +1,10 @@
 #pragma once
 #include "AspasMolino.h"
 
-class Avion
+class Avion : public EntidadIG
 {
 private:
-	Ogre::SceneNode* mNode;
+	//Ogre::SceneNode* mNode;
 	Ogre::SceneNode* heliceNode1;
 	Ogre::SceneNode* heliceNode2;
 	Ogre::SceneNode* frenteNode;
@@ -16,9 +16,8 @@ private:
 	AspasMolino* helice2;
 	Ogre::SceneManager* mSM;
 public:
-	Avion(Ogre::SceneManager* mSM_):mSM(mSM_) {
+	Avion(Ogre::SceneManager* mSM_, Ogre::SceneNode* mNode): EntidadIG(mNode), mSM(mSM_) {
 		//inicializando los SceneNode
-		mNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
 		cuerpoNode = mSM->getSceneNode("Avion")->createChildSceneNode("cuerpo");
 		alaDNode = mSM->getSceneNode("Avion")->createChildSceneNode("alaD");
 		alaINode = mSM->getSceneNode("Avion")->createChildSceneNode("alaI");

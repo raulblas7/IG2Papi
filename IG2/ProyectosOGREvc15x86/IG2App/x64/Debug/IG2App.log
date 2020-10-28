@@ -1,4 +1,8 @@
-﻿  AspasMolino.cpp
+﻿  Aspa.cpp
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Aspa.h(22,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+  AspasMolino.cpp
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,58): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180): message : vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Aspa.h(22,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
@@ -497,7 +501,11 @@ C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(51,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(59,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(62,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(100,58): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(101,58): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(161,69): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(182,37): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(183,38): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(184,41): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
   IG2Main.cpp
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\RTShaderSystem\OgreShaderProgramManager.h(208,33): warning C4251: 'Ogre::RTShader::ProgramManager::mCpuProgramsList': class 'std::set<Ogre::RTShader::Program *,std::less<Ogre::RTShader::Program *>,std::allocator<Ogre::RTShader::Program *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::RTShader::ProgramManager'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\RTShaderSystem\OgreShaderProgramManager.h(105): message : vea la declaración de 'std::set<Ogre::RTShader::Program *,std::less<Ogre::RTShader::Program *>,std::allocator<Ogre::RTShader::Program *>>'

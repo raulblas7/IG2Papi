@@ -8,6 +8,7 @@
 #include <OgreCameraMan.h>
 class Avion;
 class Molino;
+class Plano;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {
@@ -24,6 +25,7 @@ protected:
   
   Avion* avioncete = nullptr;
   Molino* molinete = nullptr;
+  Plano* planete = nullptr;
   Ogre::SceneManager* mSM = nullptr;
   OgreBites::TrayManager* mTrayMgr = nullptr;    
   Ogre::SceneNode* mLightNode = nullptr;
@@ -40,6 +42,9 @@ protected:
   Ogre::SceneNode* mMinuteNode = nullptr;
   Ogre::SceneNode* mHoursNode = nullptr;
   Ogre::SceneNode* mSecondsNode = nullptr;
+  Ogre::SceneNode* planoNode = nullptr;
+  Ogre::SceneNode* molinoNode = nullptr;
+  Ogre::SceneNode* avionNode = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
   
 };

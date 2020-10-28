@@ -7,6 +7,7 @@
 #include <string>
 #include "Molino.h"
 #include "Avion.h"
+#include "Plano.h"
 
 using namespace std;
 using namespace Ogre;
@@ -18,18 +19,19 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
     getRoot()->queueEndRendering();
   }
   else if (evt.keysym.sym == SDLK_g) {
-	  avioncete->keyPressed();
+	  //avioncete->keyPressed();
+	  molinete->keyPressed();
   }
   else if (evt.keysym.sym == SDLK_c) {
 	  //evento que hace el que el cilindro central de las aspas del molino se mete hacia adentro y salga, descomentar aqui y la region Molino de la linea 187
-	  //molinete->cilindroHaciaDentro();
+	  molinete->cilindroHaciaDentro();
   }
   else if (evt.keysym.sym == SDLK_h) {
 	  //evento para que las aspas roten alrededor del techo descomentar aqui y la region Molino de la linea 187
-	  //molinete->aspasRotando();
+	  molinete->aspasRotando();
 
 	  //evento para que el segundero del reloj rote en sentido horario, descomentar aqui y la region reloj de la linea 138
-	  /*mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
+	 /* mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
 	  mSecondsNode->roll(Ogre::Degree(-3));
 	  mSecondsNode->translate(0, -50, -50, Ogre::Node::TS_LOCAL);*/
   }
@@ -174,7 +176,7 @@ void IG2App::setupScene(void)
 
   //mMinuteNode->translate(0, 100, 0);
   //mHoursNode->translate(60, 5, 0);
-  //mSecondsNode->translate(-50, -50, 0);
+  //mSecondsNode->translate(-50, -50, 0, Ogre::Node::TS_LOCAL);
 
   //mHoursNode->roll(Ogre::Degree(-90));
   //mSecondsNode->roll(Ogre::Degree(-45));
@@ -186,7 +188,8 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region Molino
-  //molinete = new Molino(mSM, 6);
+  molinoNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
+  molinete = new Molino(mSM, 6, molinoNode);
 
 #pragma endregion
 
@@ -214,8 +217,15 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region avion
-	avioncete = new Avion(mSM);
+	/*avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
+	avioncete = new Avion(mSM, avionNode);*/
 #pragma endregion
+
+#pragma region Apartado18-Plano
+	planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
+	planete = new Plano(planoNode);
+#pragma endregion
+
 
   //mSinbadNode->setScale(20, 20, 20);
   //mSinbadNode->yaw(Ogre::Degree(-45));

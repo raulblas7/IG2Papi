@@ -1,10 +1,10 @@
 #pragma once
 #include "AspasMolino.h"
 
-class Molino
+class Molino : public EntidadIG
 {
 private:
-	Ogre::SceneNode* mNode = nullptr;
+	//Ogre::SceneNode* mNode = nullptr;
 	Ogre::SceneNode* sphereNode = nullptr;
 	Ogre::SceneNode* cilindroNode = nullptr;
 	Ogre::SceneNode* padreFicticio = nullptr;
@@ -13,8 +13,7 @@ private:
 	Ogre::SceneManager* mSM;
 	
 public:
-	Molino(Ogre::SceneManager* mng, int asps) : mSM(mng) {
-		mNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
+	Molino(Ogre::SceneManager* mng, int asps, Ogre::SceneNode* mNode) : EntidadIG(mNode), mSM(mng) {
 
 		//comentar esta primera linea de aspasN = ... si queremos hacer la rotacion ficticia y descomentar las lineas 25 y 26
 		aspasN = mSM->getSceneNode("molino")->createChildSceneNode("aspas");

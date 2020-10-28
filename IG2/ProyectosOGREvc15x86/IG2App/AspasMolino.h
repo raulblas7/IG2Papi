@@ -1,11 +1,12 @@
 #pragma once
 #include "Aspa.h"
 #include <string>
+#include "EntidadIG.h"
 using namespace std;
-class AspasMolino
+class AspasMolino : public EntidadIG
 {
 private:
-	Ogre::SceneNode* aspasNode = nullptr;
+	//Ogre::SceneNode* aspasNode = nullptr;
 	Ogre::SceneNode* aspa = nullptr;
 	Ogre::SceneNode* tablero = nullptr;
 	Ogre::SceneNode* adorno = nullptr;
@@ -15,10 +16,10 @@ private:
 	Ogre::SceneManager* mSM;
 	bool metido = false;
 public:
-	AspasMolino(Ogre::SceneNode* asp, int num) :aspasNode(asp), numAspas(num) {
-		mSM = aspasNode->getCreator();
+	AspasMolino(Ogre::SceneNode* asp, int num) : EntidadIG(asp), numAspas(num) {
+		mSM = mNode->getCreator();
 		//creacion del cilindro central
-		string aspasName = aspasNode->getName();
+		string aspasName = mNode->getName();
 		string cadaaspa = "aspa_";
 		if (aspasName == "helice1") {
 			cilindroNode = mSM->getSceneNode(aspasName)->createChildSceneNode("cilindro1");
@@ -74,7 +75,7 @@ public:
 	};
 
 	void keyPressed() {
-		aspasNode->roll(Ogre::Degree(10));
+		mNode->roll(Ogre::Degree(10));
 	};
 
 	void cilindroHaciaDentro() {
