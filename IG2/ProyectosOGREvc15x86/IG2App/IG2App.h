@@ -9,6 +9,7 @@
 class Avion;
 class Molino;
 class Plano;
+class EntidadIG;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {

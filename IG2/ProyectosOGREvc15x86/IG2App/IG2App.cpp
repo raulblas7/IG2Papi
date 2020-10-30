@@ -8,7 +8,7 @@
 #include "Molino.h"
 #include "Avion.h"
 #include "Plano.h"
-
+#include "EntidadIG.h"
 using namespace std;
 using namespace Ogre;
 
@@ -18,18 +18,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
   {
     getRoot()->queueEndRendering();
   }
-  else if (evt.keysym.sym == SDLK_g) {
-	  //avioncete->keyPressed();
-	  molinete->keyPressed();
-  }
-  else if (evt.keysym.sym == SDLK_c) {
-	  //evento que hace el que el cilindro central de las aspas del molino se mete hacia adentro y salga, descomentar aqui y la region Molino de la linea 187
-	  molinete->cilindroHaciaDentro();
-  }
   else if (evt.keysym.sym == SDLK_h) {
-	  //evento para que las aspas roten alrededor del techo descomentar aqui y la region Molino de la linea 187
-	  molinete->aspasRotando();
-
 	  //evento para que el segundero del reloj rote en sentido horario, descomentar aqui y la region reloj de la linea 138
 	 /* mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
 	  mSecondsNode->roll(Ogre::Degree(-3));
@@ -190,7 +179,7 @@ void IG2App::setupScene(void)
 #pragma region Molino
   molinoNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
   molinete = new Molino(mSM, 6, molinoNode);
-
+  EntidadIG::addListener(molinete);
 #pragma endregion
 
 #pragma region TierraySol
@@ -219,11 +208,13 @@ void IG2App::setupScene(void)
 #pragma region avion
 	/*avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
 	avioncete = new Avion(mSM, avionNode);*/
+  //EntidadIG::addListener(avioncete);
 #pragma endregion
 
 #pragma region Apartado18-Plano
 	planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
 	planete = new Plano(planoNode);
+	EntidadIG::addListener(planete);
 #pragma endregion
 
 

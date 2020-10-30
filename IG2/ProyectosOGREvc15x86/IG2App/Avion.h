@@ -67,9 +67,12 @@ public:
 		delete helice2; helice2 = nullptr;
 	};
 
-	void keyPressed() {
-		helice1->keyPressed();
-		helice2->keyPressed();
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) {
+		if (evt.keysym.sym == SDLK_g) {
+			helice1->keyPressed(evt);
+			helice2->keyPressed(evt);
+		}
+		return true;
 	};
 };
 

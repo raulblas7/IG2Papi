@@ -1,6 +1,11 @@
 #pragma once
 #include "EntidadIG.h"
+#include <OgreInput.h>
+#include <OgreSceneNode.h>
+#include <OgreSceneManager.h>
 #include <OgreEntity.h>
+#include <OgreInput.h>
+#include <SDL_keycode.h>
 
 class Aspa : public EntidadIG
 {

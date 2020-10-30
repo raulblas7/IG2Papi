@@ -1,10 +1,12 @@
 #pragma once
 #include "EntidadIG.h"
+#include <OgreMeshManager.h>
+#include "IG2App.h"
+#include <OgreEntity.h>
+using namespace Ogre;
 
 class Plano : public EntidadIG
 {
-private:
-	
 public:
 	Plano(Ogre::SceneNode* mNode) : EntidadIG(mNode) {
 		MeshManager::getSingleton().createPlane("mPlane2080x1800",

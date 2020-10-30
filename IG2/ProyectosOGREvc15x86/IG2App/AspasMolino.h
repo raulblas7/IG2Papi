@@ -74,8 +74,15 @@ public:
 			arrayAspas = nullptr;
 	};
 
-	void keyPressed() {
-		mNode->roll(Ogre::Degree(10));
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) {
+		if (evt.keysym.sym == SDLK_g) {
+			mNode->roll(Ogre::Degree(10));
+		}
+		else if (evt.keysym.sym == SDLK_c) {
+			//evento que hace el que el cilindro central de las aspas del molino se mete hacia adentro y salga, descomentar aqui y la region Molino de la linea 187
+			cilindroHaciaDentro();
+		}
+		return true;
 	};
 
 	void cilindroHaciaDentro() {

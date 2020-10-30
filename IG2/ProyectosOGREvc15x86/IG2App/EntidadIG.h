@@ -18,7 +18,7 @@ protected:
 	Ogre::SceneManager* mSM;
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
-		return false;
+		return true;
 	};
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {
