@@ -177,9 +177,10 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region Molino
-  molinoNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
-  molinete = new Molino(mSM, 6, molinoNode);
-  EntidadIG::addListener(molinete);
+ /* molinoNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
+  molinete = new Molino(6, molinoNode);
+  addInputListener(molinete);
+  EntidadIG::addListener(molinete);*/
 #pragma endregion
 
 #pragma region TierraySol
@@ -212,9 +213,42 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region Apartado18-Plano
+	/*planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
+	planete = new Plano(planoNode, 0);
+	EntidadIG::addListener(planete);*/
+#pragma endregion
+
+#pragma region Apartado23
+	//Planos
 	planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
-	planete = new Plano(planoNode);
-	EntidadIG::addListener(planete);
+	planete = new Plano(planoNode, 0);
+	planoMolNode = mSM->getRootSceneNode()->createChildSceneNode("planoMolino");
+	planeteMolino = new Plano(planoMolNode, 1);
+	planoSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("planoSinbad");
+	planeteSinbad = new Plano(planoSinbadNode, 2);
+	planoMolNode->setScale(0.2, 0.2, 0.2);
+	planoSinbadNode->setScale(0.4, 0.4, 0.4);
+	planoMolNode->translate(700, 20, -700);
+	planoSinbadNode->translate(-600, 20, 520);
+	//Molino
+	molinoNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
+	molinete = new Molino(6, molinoNode);
+	addInputListener(molinete);
+	EntidadIG::addListener(molinete);
+	molinoNode->translate(700, 20, -700);
+	//Sinbad
+	mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+	Ogre::Entity* entSin = mSM->createEntity("Sinbad.mesh");
+	mSinbadNode->attachObject(entSin);
+	mSinbadNode->scale(30, 30, 30);
+	mSinbadNode->translate(-600, -200, 600);
+	//Avion
+	avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
+	avioncete = new Avion(avionNode);
+	addInputListener(avioncete);
+	EntidadIG::addListener(avioncete);
+	avionNode->translate(0, 900, 0);
+
 #pragma endregion
 
 

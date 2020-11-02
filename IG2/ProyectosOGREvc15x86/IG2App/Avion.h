@@ -14,17 +14,17 @@ private:
 	Ogre::SceneNode* cuerpoNode;
 	AspasMolino* helice1;
 	AspasMolino* helice2;
-	Ogre::SceneManager* mSM;
+	//Ogre::SceneManager* mSM;
 public:
-	Avion(Ogre::SceneManager* mSM_, Ogre::SceneNode* mNode): EntidadIG(mNode), mSM(mSM_) {
+	Avion(Ogre::SceneNode* mNode): EntidadIG(mNode) {
 		//inicializando los SceneNode
-		cuerpoNode = mSM->getSceneNode("Avion")->createChildSceneNode("cuerpo");
-		alaDNode = mSM->getSceneNode("Avion")->createChildSceneNode("alaD");
-		alaINode = mSM->getSceneNode("Avion")->createChildSceneNode("alaI");
-		pilotoNode = mSM->getSceneNode("Avion")->createChildSceneNode("piloto");
-		frenteNode = mSM->getSceneNode("Avion")->createChildSceneNode("frente");
-		heliceNode1 = mSM->getSceneNode("Avion")->createChildSceneNode("helice1");
-		heliceNode2 = mSM->getSceneNode("Avion")->createChildSceneNode("helice2");
+		cuerpoNode = mNode->createChildSceneNode("cuerpoav");
+		alaDNode = mNode->createChildSceneNode("alaD");
+		alaINode = mNode->createChildSceneNode("alaI");
+		pilotoNode = mNode->createChildSceneNode("piloto");
+		frenteNode = mNode->createChildSceneNode("frente");
+		heliceNode1 = mNode->createChildSceneNode("helice1");
+		heliceNode2 = mNode->createChildSceneNode("helice2");
 
 		//creacion del avion
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");

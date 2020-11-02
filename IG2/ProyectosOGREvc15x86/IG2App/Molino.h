@@ -10,10 +10,10 @@ private:
 	Ogre::SceneNode* padreFicticio = nullptr;
 	AspasMolino* aspas = nullptr;
 	Ogre::SceneNode* aspasN;
-	Ogre::SceneManager* mSM;
+	//Ogre::SceneManager* mSM;
 	
 public:
-	Molino(Ogre::SceneManager* mng, int asps, Ogre::SceneNode* mNode) : EntidadIG(mNode), mSM(mng) {
+	Molino(int asps, Ogre::SceneNode* mNode) : EntidadIG(mNode) {
 
 		//aspasN = mSM->getSceneNode("molino")->createChildSceneNode("aspas");
 		sphereNode = mSM->getSceneNode("molino")->createChildSceneNode("techo");
@@ -37,7 +37,8 @@ public:
 		sphereNode->translate(0, 350, 0);
 	}
 	~Molino() { delete aspas; aspas = nullptr; };
-	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) {
+
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) override {
 		if (evt.keysym.sym == SDLK_h) {
 			aspasRotando();
 		}

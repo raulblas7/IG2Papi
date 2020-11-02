@@ -65,13 +65,13 @@ namespace OgreBites {
 
 	void IG2ApplicationContext::createRoot()
 	{
-	    Ogre::String pluginsPath;
+		Ogre::String pluginsPath;
 		pluginsPath = mFSLayer->getConfigFilePath("plugins.cfg");
 
-		if (!Ogre::FileSystemLayer::fileExists(pluginsPath))    
+		if (!Ogre::FileSystemLayer::fileExists(pluginsPath))
 		{	// IG2: OGRE_CONFIG_DIR tiene un valor absoluto no portable
 			//pluginsPath = Ogre::FileSystemLayer::resolveBundlePath(OGRE_CONFIG_DIR "/plugins" OGRE_BUILD_SUFFIX ".cfg");
-			OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, "plugins.cfg",	"IG2ApplicationContext::createRoot");
+			OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, "plugins.cfg", "IG2ApplicationContext::createRoot");
 		}
 
 		mSolutionPath = pluginsPath;    // IG2: añadido para definir directorios relativos al de la solución 
@@ -82,7 +82,6 @@ namespace OgreBites {
 		mRoot = new Ogre::Root(pluginsPath, mFSLayer->getWritablePath("ogre.cfg"), mFSLayer->getWritablePath("ogre.log"));
 
 		mOverlaySystem = new Ogre::OverlaySystem();
-		mRoot->showConfigDialog(OgreBites::getNativeConfigDialog());
 	}
 
 	void IG2ApplicationContext::shutdown()
@@ -90,7 +89,7 @@ namespace OgreBites {
 		// Destroy the RT Shader System.
 		destroyRTShaderSystem();
 
-		if (mWindow.render != nullptr) 
+		if (mWindow.render != nullptr)
 		{
 			mRoot->destroyRenderTarget(mWindow.render);
 			mWindow.render = nullptr;
@@ -99,7 +98,7 @@ namespace OgreBites {
 		delete mOverlaySystem;
 		mOverlaySystem = nullptr;
 
-		if (mWindow.native != nullptr) 
+		if (mWindow.native != nullptr)
 		{
 			SDL_DestroyWindow(mWindow.native);
 			SDL_QuitSubSystem(SDL_INIT_VIDEO);
@@ -123,7 +122,7 @@ namespace OgreBites {
 
 	bool IG2ApplicationContext::oneTimeConfig()
 	{
-		if (!mRoot->restoreConfig()) 
+		if (!mRoot->restoreConfig())
 		{
 			return mRoot->showConfigDialog(OgreBites::getNativeConfigDialog());
 		}
@@ -135,7 +134,7 @@ namespace OgreBites {
 		{
 			mShaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
 			// Core shader libs not found -> shader generating will fail.
-			if (mRTShaderLibPath.empty()) 
+			if (mRTShaderLibPath.empty())
 				return false;
 			// Create and register the material manager listener if it doesn't exist yet.
 			if (!mMaterialMgrListener) {
@@ -170,9 +169,9 @@ namespace OgreBites {
 
 	NativeWindowPair IG2ApplicationContext::createWindow(const Ogre::String& name)
 	{
-		uint32_t w, h; 
+		uint32_t w, h;
 		Ogre::NameValuePairList miscParams;
-		
+
 		Ogre::ConfigOptionMap ropts = mRoot->getRenderSystem()->getConfigOptions();
 
 		std::istringstream mode(ropts["Video Mode"].currentValue);
@@ -180,10 +179,10 @@ namespace OgreBites {
 		mode >> w; // width
 		mode >> token; // 'x' as seperator between width and height
 		mode >> h; // height
-				
+
 		miscParams["FSAA"] = ropts["FSAA"].currentValue;
 		miscParams["vsync"] = ropts["VSync"].currentValue;
-		miscParams["gamma"] = ropts["sRGB Gamma Conversion"].currentValue;  
+		miscParams["gamma"] = ropts["sRGB Gamma Conversion"].currentValue;
 
 		if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_InitSubSystem(SDL_INIT_VIDEO);
 
@@ -191,8 +190,8 @@ namespace OgreBites {
 
 		if (ropts["Full Screen"].currentValue == "Yes")  flags = SDL_WINDOW_FULLSCREEN;
 		//else  flags = SDL_WINDOW_RESIZABLE;
-		
-		mWindow.native = SDL_CreateWindow(name.c_str(),	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
+
+		mWindow.native = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
 
 		SDL_SysWMinfo wmInfo;
 		SDL_VERSION(&wmInfo.version);
@@ -221,10 +220,10 @@ namespace OgreBites {
 
 		return true;
 	}
-	
+
 	void IG2ApplicationContext::pollEvents()   // from frameStarted
 	{
-		if (mWindow.native == nullptr) 
+		if (mWindow.native == nullptr)
 			return;  // SDL events not initialized
 
 		SDL_Event event;
@@ -253,7 +252,7 @@ namespace OgreBites {
 		}
 
 		// just avoid "window not responding"
-		WindowEventUtilities::messagePump();  
+		WindowEventUtilities::messagePump();
 	}
 
 	void IG2ApplicationContext::_fireInputEvent(const Event& event) const
@@ -294,7 +293,7 @@ namespace OgreBites {
 				l.touchMoved(event.tfinger);
 				break;
 			}
-			
+
 		}
 	}
 
@@ -316,8 +315,8 @@ namespace OgreBites {
 		else
 		{
 			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
-							Ogre::FileSystemLayer::resolveBundlePath(mSolutionPath + "\\media"), 
-							"FileSystem", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+				Ogre::FileSystemLayer::resolveBundlePath(mSolutionPath + "\\media"),
+				"FileSystem", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 		}
 
 		Ogre::String sec, type, arch;

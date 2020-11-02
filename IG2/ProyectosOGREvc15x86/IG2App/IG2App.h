@@ -27,6 +27,8 @@ protected:
   Avion* avioncete = nullptr;
   Molino* molinete = nullptr;
   Plano* planete = nullptr;
+  Plano* planeteMolino = nullptr;
+  Plano* planeteSinbad = nullptr;
   Ogre::SceneManager* mSM = nullptr;
   OgreBites::TrayManager* mTrayMgr = nullptr;    
   Ogre::SceneNode* mLightNode = nullptr;
@@ -44,6 +46,8 @@ protected:
   Ogre::SceneNode* mHoursNode = nullptr;
   Ogre::SceneNode* mSecondsNode = nullptr;
   Ogre::SceneNode* planoNode = nullptr;
+  Ogre::SceneNode* planoMolNode = nullptr;
+  Ogre::SceneNode* planoSinbadNode = nullptr;
   Ogre::SceneNode* molinoNode = nullptr;
   Ogre::SceneNode* avionNode = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
