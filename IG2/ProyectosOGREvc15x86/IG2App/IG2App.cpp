@@ -209,6 +209,7 @@ void IG2App::setupScene(void)
 #pragma region avion
 	/*avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
 	avioncete = new Avion(mSM, avionNode);*/
+  //addInputListener(avioncete);
   //EntidadIG::addListener(avioncete);
 #pragma endregion
 
@@ -247,7 +248,7 @@ void IG2App::setupScene(void)
 	avioncete = new Avion(avionNode);
 	addInputListener(avioncete);
 	EntidadIG::addListener(avioncete);
-	avionNode->translate(0, 900, 0);
+	avionNode->translate(-700, 900, 0);
 
 #pragma endregion
 

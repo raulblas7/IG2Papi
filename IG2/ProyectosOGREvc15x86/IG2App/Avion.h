@@ -74,5 +74,15 @@ public:
 		}
 		return true;
 	};
+
+	virtual void frameRendered(const Ogre::FrameEvent& evt) {
+		Ogre::Real time = evt.timeSinceLastFrame;
+		int angle = 800 * time;
+		helice1->rotaAspas(angle);
+		helice2->rotaAspas(angle);
+		mNode->translate(1800,0 , 0, Ogre::Node::TS_LOCAL);
+		mNode->yaw(Ogre::Degree(3));
+		mNode->translate(-1800, 0, 0, Ogre::Node::TS_LOCAL);
+	};
 };
 

@@ -48,6 +48,12 @@ public:
 		return true;
 	};
 
+	virtual void frameRendered(const Ogre::FrameEvent& evt) {
+		Ogre::Real time = evt.timeSinceLastFrame;
+		int angle = 100 * time;
+		aspas->rotaAspas(angle);
+	};
+
 	void aspasRotando() {
 		//usando padreficticio
 		padreFicticio->yaw(Ogre::Degree(3));

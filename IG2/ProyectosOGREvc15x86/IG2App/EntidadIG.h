@@ -23,10 +23,7 @@ protected:
 		return false;
 	};
 
-	virtual void frameRendered(const Ogre::FrameEvent& evt) {
-		Ogre::Real time = evt.timeSinceLastFrame;
-
-	};
+	virtual void frameRendered(const Ogre::FrameEvent& evt) {};
 
 	virtual void receiveEvent(EntidadIG* entidad) {
 		

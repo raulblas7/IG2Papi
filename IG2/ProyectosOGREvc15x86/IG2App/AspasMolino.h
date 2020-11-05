@@ -85,6 +85,9 @@ public:
 		return true;
 	};
 
+	void rotaAspas(int angle) {
+		mNode->roll(Ogre::Degree(angle));
+	}
 	void cilindroHaciaDentro() {
 		if (!metido)
 		{
