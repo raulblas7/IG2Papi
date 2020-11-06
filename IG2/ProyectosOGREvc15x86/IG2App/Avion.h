@@ -16,7 +16,7 @@ private:
 	AspasMolino* helice2;
 	//Ogre::SceneManager* mSM;
 public:
-	Avion(Ogre::SceneNode* mNode): EntidadIG(mNode) {
+	Avion(Ogre::SceneNode* mNode) : EntidadIG(mNode) {
 		//inicializando los SceneNode
 		cuerpoNode = mNode->createChildSceneNode("cuerpoav");
 		alaDNode = mNode->createChildSceneNode("alaD");
@@ -80,7 +80,7 @@ public:
 		int angle = 800 * time;
 		helice1->rotaAspas(angle);
 		helice2->rotaAspas(angle);
-		mNode->translate(1800,0 , 0, Ogre::Node::TS_LOCAL);
+		mNode->translate(1800, 0, 0, Ogre::Node::TS_LOCAL);
 		mNode->yaw(Ogre::Degree(3));
 		mNode->translate(-1800, 0, 0, Ogre::Node::TS_LOCAL);
 	};

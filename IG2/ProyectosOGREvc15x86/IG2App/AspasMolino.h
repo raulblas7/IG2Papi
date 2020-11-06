@@ -30,13 +30,13 @@ public:
 			cadaaspa = "aspahel2_";
 		}
 		else cilindroNode = mSM->getSceneNode(aspasName)->createChildSceneNode("cilindro");
-		
+
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
 		cilindroNode->attachObject(cil);
 		cilindroNode->setScale(25.0, 8.0, 25.0);
 		cilindroNode->pitch(Ogre::Degree(90));
 		//creacion de las aspas
-		arrayAspas = new Aspa*[num];
+		arrayAspas = new Aspa * [num];
 		for (int i = 0; i < numAspas; i++) {
 			string n;
 			string n2;
@@ -51,7 +51,8 @@ public:
 				n2 = "adornohel2_" + to_string(i);
 				n3 = "aspahel2_" + to_string(i);
 			}
-			else { n = "tablero_" + to_string(i); n2 = "adorno_" + to_string(i); n3 = "aspa_" + to_string(i);
+			else {
+				n = "tablero_" + to_string(i); n2 = "adorno_" + to_string(i); n3 = "aspa_" + to_string(i);
 			}
 			aspa = mSM->getSceneNode(aspasName)->createChildSceneNode(n3);
 			tablero = mSM->getSceneNode(n3)->createChildSceneNode(n);
@@ -70,8 +71,9 @@ public:
 			angle += angleToAdd;
 		}
 	};
-	~AspasMolino() { delete[] arrayAspas;
-			arrayAspas = nullptr;
+	~AspasMolino() {
+		delete[] arrayAspas;
+		arrayAspas = nullptr;
 	};
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) {
