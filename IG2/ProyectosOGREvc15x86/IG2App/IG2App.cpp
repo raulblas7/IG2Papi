@@ -9,6 +9,8 @@
 #include "Avion.h"
 #include "Plano.h"
 #include "EntidadIG.h"
+#include "Simbad.h"
+
 using namespace std;
 using namespace Ogre;
 
@@ -94,7 +96,6 @@ void IG2App::setupScene(void)
   //------------------------------------------------------------------------
 
   // without light we would just get a black screen 
-
   Light* luz = mSM->createLight("Luz");
   luz->setType(Ogre::Light::LT_DIRECTIONAL);
   luz->setDiffuseColour(0.75, 0.75, 0.75);
@@ -105,7 +106,7 @@ void IG2App::setupScene(void)
 
   mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
   //lightNode->setPosition(0, 0, 1000);
- 
+  mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
   //------------------------------------------------------------------------
 
   // finally something to render
@@ -236,19 +237,17 @@ void IG2App::setupScene(void)
 	molinete = new Molino(6, molinoNode);
 	addInputListener(molinete);
 	EntidadIG::addListener(molinete);
-	molinoNode->translate(700, 20, -700);
+	molinoNode->translate(700, -50, -700);
+	molinoNode->setScale(0.8, 0.8, 0.8);
 	//Sinbad
 	mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-	Ogre::Entity* entSin = mSM->createEntity("Sinbad.mesh");
-	mSinbadNode->attachObject(entSin);
-	mSinbadNode->scale(30, 30, 30);
-	mSinbadNode->translate(-600, -200, 600);
+	simbadete = new Simbad(mSinbadNode);
 	//Avion
 	avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
 	avioncete = new Avion(avionNode);
 	addInputListener(avioncete);
 	EntidadIG::addListener(avioncete);
-	avionNode->translate(-700, 900, 0);
+	avionNode->translate(-1000, 900, 0);
 
 #pragma endregion
 

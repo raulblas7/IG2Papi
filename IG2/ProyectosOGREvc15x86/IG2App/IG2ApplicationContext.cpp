@@ -80,7 +80,7 @@ namespace OgreBites {
 		mSolutionPath.erase(mSolutionPath.find_last_of("\\") + 1, mSolutionPath.size() - 1);   // IG2: Quito /bin
 
 		mRoot = new Ogre::Root(pluginsPath, mFSLayer->getWritablePath("ogre.cfg"), mFSLayer->getWritablePath("ogre.log"));
-
+		//mRoot->showConfigDialog(OgreBites::getNativeConfigDialog());
 		mOverlaySystem = new Ogre::OverlaySystem();
 	}
 
@@ -111,7 +111,7 @@ namespace OgreBites {
 		mRoot->initialise(false);
 		createWindow(mAppName);
 		setWindowGrab(false);   // IG2: ratón libre
-
+		
 		locateResources();
 		initialiseRTShaderSystem();
 		loadResources();
