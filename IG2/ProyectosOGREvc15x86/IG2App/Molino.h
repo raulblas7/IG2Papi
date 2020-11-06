@@ -11,7 +11,7 @@ private:
 	AspasMolino* aspas = nullptr;
 	Ogre::SceneNode* aspasN;
 	//Ogre::SceneManager* mSM;
-	
+
 public:
 	Molino(int asps, Ogre::SceneNode* mNode) : EntidadIG(mNode) {
 
@@ -21,7 +21,7 @@ public:
 
 		padreFicticio = mSM->getSceneNode("techo")->createChildSceneNode("ficticio");
 		aspasN = mSM->getSceneNode("ficticio")->createChildSceneNode("aspas");
-	
+
 
 		//creacion del molino
 		aspas = new AspasMolino(aspasN, asps);
