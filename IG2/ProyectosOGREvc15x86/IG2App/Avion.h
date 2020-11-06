@@ -14,9 +14,10 @@ private:
 	Ogre::SceneNode* cuerpoNode;
 	AspasMolino* helice1;
 	AspasMolino* helice2;
+	Ogre::Light* foco;
 	//Ogre::SceneManager* mSM;
 public:
-	Avion(Ogre::SceneNode* mNode) : EntidadIG(mNode) {
+	Avion(Ogre::SceneNode* mNode): EntidadIG(mNode) {
 		//inicializando los SceneNode
 		cuerpoNode = mNode->createChildSceneNode("cuerpoav");
 		alaDNode = mNode->createChildSceneNode("alaD");
@@ -34,6 +35,7 @@ public:
 		cuerpoNode->attachObject(cuerpo);
 
 		Ogre::Entity* alaizq = mSM->createEntity("cube.mesh");
+		//alaizq->setMaterialName("Ogre/Compositor/BlackAndWhite");
 		alaINode->attachObject(alaizq);
 		Ogre::Entity* alader = mSM->createEntity("cube.mesh");
 		alaDNode->attachObject(alader);
@@ -61,6 +63,16 @@ public:
 		heliceNode2->setScale(0.3, 0.3, 0.3);
 		heliceNode2->translate(300, 0, 100);
 
+		//luz
+		foco = mSM->createLight("Luz Foco");
+		foco->setType(Ogre::Light::LT_SPOTLIGHT);
+		foco->setDiffuseColour(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+		foco->setDirection(Ogre::Vector3(1, -1, 0));
+		foco->setSpotlightInnerAngle(Ogre::Degree(5.0f));
+		foco->setSpotlightOuterAngle(Ogre::Degree(45.0f));
+		foco->setSpotlightFalloff(0.0f);
+
+		mNode->attachObject(foco);
 	}
 	~Avion() {
 		delete helice1; helice1 = nullptr;
@@ -80,9 +92,9 @@ public:
 		int angle = 800 * time;
 		helice1->rotaAspas(angle);
 		helice2->rotaAspas(angle);
-		mNode->translate(1800, 0, 0, Ogre::Node::TS_LOCAL);
+		mNode->translate(1200,0 , 0, Ogre::Node::TS_LOCAL);
 		mNode->yaw(Ogre::Degree(3));
-		mNode->translate(-1800, 0, 0, Ogre::Node::TS_LOCAL);
+		mNode->translate(-1200, 0, 0, Ogre::Node::TS_LOCAL);
 	};
 };
 

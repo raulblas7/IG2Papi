@@ -127,12 +127,19 @@
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="Molino.h" />
     <ClInclude Include="Plano.h" />
+    <ClInclude Include="Simbad.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Aspa.cpp" />
+    <ClCompile Include="AspasMolino.cpp" />
+    <ClCompile Include="Avion.cpp" />
     <ClCompile Include="EntidadIG.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
+    <ClCompile Include="Molino.cpp" />
+    <ClCompile Include="Plano.cpp" />
+    <ClCompile Include="Simbad.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

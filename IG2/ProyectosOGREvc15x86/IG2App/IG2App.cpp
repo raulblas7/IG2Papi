@@ -9,106 +9,107 @@
 #include "Avion.h"
 #include "Plano.h"
 #include "EntidadIG.h"
+#include "Simbad.h"
+
 using namespace std;
 using namespace Ogre;
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	if (evt.keysym.sym == SDLK_ESCAPE)
-	{
-		getRoot()->queueEndRendering();
-	}
-	else if (evt.keysym.sym == SDLK_h) {
-		//evento para que el segundero del reloj rote en sentido horario, descomentar aqui y la region reloj de la linea 138
-	   /* mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
-		mSecondsNode->roll(Ogre::Degree(-3));
-		mSecondsNode->translate(0, -50, -50, Ogre::Node::TS_LOCAL);*/
-	}
-	else if (evt.keysym.sym == SDLK_j) {
-		//evento de movimiento de rotacion de la tierra alrededor del sol y de la luna alrededor de la tierra, descomentar aqui y region TierraySol linea 192
-		/*Tierra->translate(-350, 0, -350, Ogre::Node::TS_LOCAL);
-		Tierra->yaw(Ogre::Degree(-3));
-		Tierra->translate(350, 0, 350, Ogre::Node::TS_LOCAL);
+  if (evt.keysym.sym == SDLK_ESCAPE)
+  {
+    getRoot()->queueEndRendering();
+  }
+  else if (evt.keysym.sym == SDLK_h) {
+	  //evento para que el segundero del reloj rote en sentido horario, descomentar aqui y la region reloj de la linea 138
+	 /* mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
+	  mSecondsNode->roll(Ogre::Degree(-3));
+	  mSecondsNode->translate(0, -50, -50, Ogre::Node::TS_LOCAL);*/
+  }
+  else if (evt.keysym.sym == SDLK_j) {
+	  //evento de movimiento de rotacion de la tierra alrededor del sol y de la luna alrededor de la tierra, descomentar aqui y region TierraySol linea 192
+	  /*Tierra->translate(-350, 0, -350, Ogre::Node::TS_LOCAL);
+	  Tierra->yaw(Ogre::Degree(-3));
+	  Tierra->translate(350, 0, 350, Ogre::Node::TS_LOCAL);
 
-		Ficticio->yaw(Ogre::Degree(10))*/;
-	}
+	  Ficticio->yaw(Ogre::Degree(10))*/;
+  }
 
-	return true;
+  return true;
 }
 
 void IG2App::shutdown()
 {
-	mShaderGenerator->removeSceneManager(mSM);
-	mSM->removeRenderQueueListener(mOverlaySystem);
+  mShaderGenerator->removeSceneManager(mSM);  
+  mSM->removeRenderQueueListener(mOverlaySystem);  
+					
+  mRoot->destroySceneManager(mSM);  
 
-	mRoot->destroySceneManager(mSM);
-
-	delete mTrayMgr;  mTrayMgr = nullptr;
-	delete mCamMgr; mCamMgr = nullptr;
-	delete avioncete; avioncete = nullptr;
-	delete molinete; molinete = nullptr;
-	// do not forget to call the base 
-	IG2ApplicationContext::shutdown();
+  delete mTrayMgr;  mTrayMgr = nullptr;
+  delete mCamMgr; mCamMgr = nullptr;
+  delete avioncete; avioncete = nullptr;
+  delete molinete; molinete = nullptr;
+  // do not forget to call the base 
+  IG2ApplicationContext::shutdown();
 }
 
 void IG2App::setup(void)
 {
-	// do not forget to call the base first
-	IG2ApplicationContext::setup();
+  // do not forget to call the base first
+  IG2ApplicationContext::setup();
 
-	mSM = mRoot->createSceneManager();
+  mSM = mRoot->createSceneManager();  
 
-	// register our scene with the RTSS
-	mShaderGenerator->addSceneManager(mSM);
+  // register our scene with the RTSS
+  mShaderGenerator->addSceneManager(mSM);
 
-	mSM->addRenderQueueListener(mOverlaySystem);
+  mSM->addRenderQueueListener(mOverlaySystem);
 
-	mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
-	mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-	addInputListener(mTrayMgr);
+  mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);  
+  mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+  addInputListener(mTrayMgr);
 
-	addInputListener(this);
-	setupScene();
+  addInputListener(this);   
+  setupScene();
 }
 
 void IG2App::setupScene(void)
 {
-	// create the camera
-	Camera* cam = mSM->createCamera("Cam");
-	cam->setNearClipDistance(1);
-	cam->setFarClipDistance(10000);
-	cam->setAutoAspectRatio(true);
-	//cam->setPolygonMode(Ogre::PM_WIREFRAME); 
+  // create the camera
+  Camera* cam = mSM->createCamera("Cam");
+  cam->setNearClipDistance(1); 
+  cam->setFarClipDistance(10000);
+  cam->setAutoAspectRatio(true);
+  //cam->setPolygonMode(Ogre::PM_WIREFRAME); 
 
-	mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
-	mCamNode->attachObject(cam);
+  mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
+  mCamNode->attachObject(cam);
 
-	mCamNode->setPosition(0, 0, 1000);
-	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
-	//mCamNode->setDirection(Ogre::Vector3(0, 0, -1));  
+  mCamNode->setPosition(0, 0, 1000);
+  mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+  //mCamNode->setDirection(Ogre::Vector3(0, 0, -1));  
+  
+  // and tell it to render into the main window
+  Viewport* vp = getRenderWindow()->addViewport(cam);
+  vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
 
-	// and tell it to render into the main window
-	Viewport* vp = getRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+  //------------------------------------------------------------------------
 
-	//------------------------------------------------------------------------
+  // without light we would just get a black screen 
+  Light* luz = mSM->createLight("Luz");
+  luz->setType(Ogre::Light::LT_DIRECTIONAL);
+  luz->setDiffuseColour(0.75, 0.75, 0.75);
 
-	// without light we would just get a black screen 
+  mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
+  //mLightNode = mCamNode->createChildSceneNode("nLuz");
+  mLightNode->attachObject(luz);
 
-	Light* luz = mSM->createLight("Luz");
-	luz->setType(Ogre::Light::LT_DIRECTIONAL);
-	luz->setDiffuseColour(0.75, 0.75, 0.75);
+  mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
+  //lightNode->setPosition(0, 0, 1000);
+  mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+  //------------------------------------------------------------------------
 
-	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-	//mLightNode = mCamNode->createChildSceneNode("nLuz");
-	mLightNode->attachObject(luz);
-
-	mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
-	//lightNode->setPosition(0, 0, 1000);
-
-	//------------------------------------------------------------------------
-
-	// finally something to render
+  // finally something to render
 
 #pragma region sinbadybaño
   /*Ogre::Entity* ent = mSM->createEntity("RomanBathLower.mesh");
@@ -185,32 +186,32 @@ void IG2App::setupScene(void)
 
 #pragma region TierraySol
 
-  /*Sol = mSM->getRootSceneNode()->createChildSceneNode("sol");
-  Tierra = mSM->getRootSceneNode()->createChildSceneNode("tierra");
-  Ficticio = mSM->getSceneNode("tierra")->createChildSceneNode("fict");
-  Luna = mSM->getSceneNode("fict")->createChildSceneNode("luna");
+	  /*Sol = mSM->getRootSceneNode()->createChildSceneNode("sol");
+	  Tierra = mSM->getRootSceneNode()->createChildSceneNode("tierra");
+	  Ficticio = mSM->getSceneNode("tierra")->createChildSceneNode("fict");
+	  Luna = mSM->getSceneNode("fict")->createChildSceneNode("luna");
 
 
-   Ogre::Entity* solito = mSM->createEntity("sphere.mesh");
-   Sol->attachObject(solito);
-   Ogre::Entity* tierraplana = mSM->createEntity("sphere.mesh");
-   Tierra->attachObject(tierraplana);
-   Ogre::Entity* lunalunera = mSM->createEntity("sphere.mesh");
-   Luna->attachObject(lunalunera);
+	   Ogre::Entity* solito = mSM->createEntity("sphere.mesh");
+	   Sol->attachObject(solito);
+	   Ogre::Entity* tierraplana = mSM->createEntity("sphere.mesh");
+	   Tierra->attachObject(tierraplana);
+	   Ogre::Entity* lunalunera = mSM->createEntity("sphere.mesh");
+	   Luna->attachObject(lunalunera);
 
-   Sol->setScale(2, 2, 2);
-   Tierra->setScale(1, 1, 1);
-   Luna->setScale(0.3, 0.3, 0.3);
-   Tierra->translate(350, 0, 350);
-   Luna->translate(90, 0, 120);*/
+	   Sol->setScale(2, 2, 2);
+	   Tierra->setScale(1, 1, 1);
+	   Luna->setScale(0.3, 0.3, 0.3);
+	   Tierra->translate(350, 0, 350);
+	   Luna->translate(90, 0, 120);*/
 
 #pragma endregion
 
 #pragma region avion
-   /*avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
-   avioncete = new Avion(mSM, avionNode);*/
-   //addInputListener(avioncete);
-   //EntidadIG::addListener(avioncete);
+	/*avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
+	avioncete = new Avion(mSM, avionNode);*/
+  //addInputListener(avioncete);
+  //EntidadIG::addListener(avioncete);
 #pragma endregion
 
 #pragma region Apartado18-Plano
@@ -236,38 +237,36 @@ void IG2App::setupScene(void)
 	molinete = new Molino(6, molinoNode);
 	addInputListener(molinete);
 	EntidadIG::addListener(molinete);
-	molinoNode->translate(700, 20, -700);
+	molinoNode->translate(700, -50, -700);
+	molinoNode->setScale(0.8, 0.8, 0.8);
 	//Sinbad
 	mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-	Ogre::Entity* entSin = mSM->createEntity("Sinbad.mesh");
-	mSinbadNode->attachObject(entSin);
-	mSinbadNode->scale(30, 30, 30);
-	mSinbadNode->translate(-600, -200, 600);
+	simbadete = new Simbad(mSinbadNode);
 	//Avion
 	avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
 	avioncete = new Avion(avionNode);
 	addInputListener(avioncete);
 	EntidadIG::addListener(avioncete);
-	avionNode->translate(-700, 900, 0);
+	avionNode->translate(-1000, 900, 0);
 
 #pragma endregion
 
 
-	//mSinbadNode->setScale(20, 20, 20);
-	//mSinbadNode->yaw(Ogre::Degree(-45));
-	//mSinbadNode->showBoundingBox(true);
-	//mSinbadNode->setVisible(false);
+  //mSinbadNode->setScale(20, 20, 20);
+  //mSinbadNode->yaw(Ogre::Degree(-45));
+  //mSinbadNode->showBoundingBox(true);
+  //mSinbadNode->setVisible(false);
 
-	//------------------------------------------------------------------------
+  //------------------------------------------------------------------------
 
-	mCamMgr = new OgreBites::CameraMan(mCamNode);
-	addInputListener(mCamMgr);
-	mCamMgr->setStyle(OgreBites::CS_ORBIT);
+  mCamMgr = new OgreBites::CameraMan(mCamNode);
+  addInputListener(mCamMgr);
+  mCamMgr->setStyle(OgreBites::CS_ORBIT);  
+  
+  //mCamMgr->setTarget(mSinbadNode);  
+  //mCamMgr->setYawPitchDist(Radian(0), Degree(30), 100);
 
-	//mCamMgr->setTarget(mSinbadNode);  
-	//mCamMgr->setYawPitchDist(Radian(0), Degree(30), 100);
-
-	//------------------------------------------------------------------------
+  //------------------------------------------------------------------------
 
 }
 

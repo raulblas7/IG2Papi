@@ -10,48 +10,50 @@ class Avion;
 class Molino;
 class Plano;
 class EntidadIG;
+class Simbad;
 
-class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
+class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {
 public:
-	explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()  
-	virtual ~IG2App() { };   // delete -> shutdown()  
-
+  explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()  
+  virtual ~IG2App() { };   // delete -> shutdown()  
+ 
 protected:
-	virtual void setup();
-	virtual void shutdown();
-	virtual void setupScene();
+  virtual void setup();
+  virtual void shutdown();
+  virtual void setupScene();
 
-	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
-
-	Avion* avioncete = nullptr;
-	Molino* molinete = nullptr;
-	Plano* planete = nullptr;
-	Plano* planeteMolino = nullptr;
-	Plano* planeteSinbad = nullptr;
-	Ogre::SceneManager* mSM = nullptr;
-	OgreBites::TrayManager* mTrayMgr = nullptr;
-	Ogre::SceneNode* mLightNode = nullptr;
-	Ogre::SceneNode* mCamNode = nullptr;
-	Ogre::SceneNode* mSinbadNode = nullptr;
-	Ogre::SceneNode* mBathNode = nullptr;
-	Ogre::SceneNode* Tierra;
-	Ogre::SceneNode* Sol;
-	Ogre::SceneNode* Luna;
-	Ogre::SceneNode* Ficticio;
-	Ogre::SceneNode* mHourNode[12];
-	Ogre::SceneNode* Clock;
-	Ogre::SceneNode* Spheres;
-	Ogre::SceneNode* mMinuteNode = nullptr;
-	Ogre::SceneNode* mHoursNode = nullptr;
-	Ogre::SceneNode* mSecondsNode = nullptr;
-	Ogre::SceneNode* planoNode = nullptr;
-	Ogre::SceneNode* planoMolNode = nullptr;
-	Ogre::SceneNode* planoSinbadNode = nullptr;
-	Ogre::SceneNode* molinoNode = nullptr;
-	Ogre::SceneNode* avionNode = nullptr;
-	OgreBites::CameraMan* mCamMgr = nullptr;
-
+  virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
+  
+  Avion* avioncete = nullptr;
+  Molino* molinete = nullptr;
+  Plano* planete = nullptr;
+  Plano* planeteMolino = nullptr;
+  Plano* planeteSinbad = nullptr;
+  Simbad* simbadete = nullptr;
+  Ogre::SceneManager* mSM = nullptr;
+  OgreBites::TrayManager* mTrayMgr = nullptr;    
+  Ogre::SceneNode* mLightNode = nullptr;
+  Ogre::SceneNode* mCamNode = nullptr;
+  Ogre::SceneNode* mSinbadNode = nullptr;
+  Ogre::SceneNode* mBathNode = nullptr;
+  Ogre::SceneNode* Tierra;
+  Ogre::SceneNode* Sol;
+  Ogre::SceneNode* Luna;
+  Ogre::SceneNode* Ficticio;
+  Ogre::SceneNode* mHourNode[12];
+  Ogre::SceneNode* Clock;
+  Ogre::SceneNode* Spheres;
+  Ogre::SceneNode* mMinuteNode = nullptr;
+  Ogre::SceneNode* mHoursNode = nullptr;
+  Ogre::SceneNode* mSecondsNode = nullptr;
+  Ogre::SceneNode* planoNode = nullptr;
+  Ogre::SceneNode* planoMolNode = nullptr;
+  Ogre::SceneNode* planoSinbadNode = nullptr;
+  Ogre::SceneNode* molinoNode = nullptr;
+  Ogre::SceneNode* avionNode = nullptr;
+  OgreBites::CameraMan* mCamMgr = nullptr;
+  
 };
 
 #endif
