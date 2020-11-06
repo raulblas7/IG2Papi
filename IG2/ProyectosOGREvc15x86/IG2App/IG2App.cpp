@@ -223,6 +223,7 @@ void IG2App::setupScene(void)
 #pragma region Apartado23
 	//Planos
 	planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
+	
 	planete = new Plano(planoNode, 0);
 	planoMolNode = mSM->getRootSceneNode()->createChildSceneNode("planoMolino");
 	planeteMolino = new Plano(planoMolNode, 1);
