@@ -19,7 +19,10 @@ public:
 		tableroNode(tableroNode_), cilindroNode(cilindroNode_) {
 		mSM = mNode->getCreator();
 		Ogre::Entity* tab = mSM->createEntity("cube.mesh");
+		tab->setMaterialName("Practica1/marron");
 		Ogre::Entity* ador = mSM->createEntity("Barrel.mesh");
+		ador->setMaterialName("Practica1/azul");
+
 		tableroNode->attachObject(tab);
 		cilindroNode->attachObject(ador);
 		tableroNode->setScale(5.0, 0.8, 0.1);

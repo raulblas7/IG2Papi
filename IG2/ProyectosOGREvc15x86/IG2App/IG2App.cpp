@@ -106,7 +106,7 @@ void IG2App::setupScene(void)
 
   mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
   //lightNode->setPosition(0, 0, 1000);
-  mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+ // mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
   //------------------------------------------------------------------------
 
   // finally something to render
@@ -225,10 +225,18 @@ void IG2App::setupScene(void)
 	planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
 	
 	planete = new Plano(planoNode, 0);
+	planete->getEntity()->setMaterialName("Practica1/agua");
+
 	planoMolNode = mSM->getRootSceneNode()->createChildSceneNode("planoMolino");
+
 	planeteMolino = new Plano(planoMolNode, 1);
+	planeteMolino->getEntity()->setMaterialName("Practica1/naranja");
+
 	planoSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("planoSinbad");
+
 	planeteSinbad = new Plano(planoSinbadNode, 2);
+	planeteSinbad->getEntity()->setMaterialName("Practica1/rojo");
+
 	planoMolNode->setScale(0.2, 0.2, 0.2);
 	planoSinbadNode->setScale(0.4, 0.4, 0.4);
 	planoMolNode->translate(700, 20, -700);

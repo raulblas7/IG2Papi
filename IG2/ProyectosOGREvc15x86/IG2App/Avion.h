@@ -29,18 +29,28 @@ public:
 
 		//creacion del avion
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
+		cil->setMaterialName("Practica1/naranja");
+
 		frenteNode->attachObject(cil);
 
 		Ogre::Entity* cuerpo = mSM->createEntity("sphere.mesh");
+		cuerpo->setMaterialName("Practica1/rojo");
+
 		cuerpoNode->attachObject(cuerpo);
 
 		Ogre::Entity* alaizq = mSM->createEntity("cube.mesh");
-		//alaizq->setMaterialName("Ogre/Compositor/BlackAndWhite");
+		alaizq->setMaterialName("Practica1/alas");
+
 		alaINode->attachObject(alaizq);
+
 		Ogre::Entity* alader = mSM->createEntity("cube.mesh");
+		alader->setMaterialName("Practica1/alas");
+
 		alaDNode->attachObject(alader);
 
 		Ogre::Entity* piloto = mSM->createEntity("ninja.mesh");
+		piloto->setMaterialName("Practica1/amarillo");
+
 		pilotoNode->attachObject(piloto);
 
 		helice1 = new AspasMolino(heliceNode1, 6);

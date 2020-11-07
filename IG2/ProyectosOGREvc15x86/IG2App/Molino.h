@@ -26,8 +26,12 @@ public:
 		//creacion del molino
 		aspas = new AspasMolino(aspasN, asps);
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
+			cil->setMaterialName("Practica1/tronco");
+
 		cilindroNode->attachObject(cil);
 		Ogre::Entity* tech = mSM->createEntity("sphere.mesh");
+		tech->setMaterialName("Practica1/amarillo");
+
 		sphereNode->attachObject(tech);
 		//ajustes de tamaño y posicion
 		cilindroNode->setScale(65.0, 120.0, 65.0);

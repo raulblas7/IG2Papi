@@ -37,6 +37,7 @@ namespace OgreBites {
 
 		mShaderGenerator = nullptr;
 		mMaterialMgrListener = nullptr;
+
 	}
 
 	IG2ApplicationContext::~IG2ApplicationContext()

@@ -32,6 +32,7 @@ public:
 		else cilindroNode = mSM->getSceneNode(aspasName)->createChildSceneNode("cilindro");
 		
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
+		cil->setMaterialName("Practica1/metal");
 		cilindroNode->attachObject(cil);
 		cilindroNode->setScale(25.0, 8.0, 25.0);
 		cilindroNode->pitch(Ogre::Degree(90));
