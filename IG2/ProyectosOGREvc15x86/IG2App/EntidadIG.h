@@ -3,7 +3,7 @@
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreFrameListener.h>
-
+#include <SDL_keycode.h>
 
 class EntidadIG :public OgreBites::InputListener {
 public:
@@ -20,6 +20,9 @@ protected:
 	Ogre::SceneManager* mSM;
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
+		if (evt.keysym.sym == SDLK_r) {
+			sendEvent(this);
+		}
 		return false;
 	};
 

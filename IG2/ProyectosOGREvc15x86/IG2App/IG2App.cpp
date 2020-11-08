@@ -34,6 +34,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 	  Ficticio->yaw(Ogre::Degree(10))*/;
   }
+ 
 
   return true;
 }
@@ -101,7 +102,7 @@ void IG2App::setupScene(void)
   luz->setDiffuseColour(0.75, 0.75, 0.75);
 
   mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-  //mLightNode = mCamNode->createChildSceneNode("nLuz");
+ // mLightNode = mCamNode->createChildSceneNode("nLuz");
   mLightNode->attachObject(luz);
 
   mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
@@ -226,6 +227,7 @@ void IG2App::setupScene(void)
 	
 	planete = new Plano(planoNode, 0);
 	planete->getEntity()->setMaterialName("Practica1/agua");
+	EntidadIG::addListener(planete);
 
 	planoMolNode = mSM->getRootSceneNode()->createChildSceneNode("planoMolino");
 
@@ -257,6 +259,18 @@ void IG2App::setupScene(void)
 	addInputListener(avioncete);
 	EntidadIG::addListener(avioncete);
 	avionNode->translate(-1000, 900, 0);
+	//cabeza
+	
+	cabezaNode = mSM->getRootSceneNode()->createChildSceneNode("Cabeza");
+	Ogre::Entity* cabeza= mSM->createEntity("sphere.mesh");
+	cabezaNode->attachObject(cabeza);
+	cabeza->setMaterialName("Practica1/cabeza");
+	cabezaNode->translate(805,-300,-550);
+	cabezaNode->setScale(0.5, 0.5, 0.5);
+
+	Ogre::SceneNode* nodeficti = mSM->getRootSceneNode()->createChildSceneNode("fictisioh");
+	entidadFict = new EntidadIG(nodeficti);
+	addInputListener(entidadFict);
 
 #pragma endregion
 

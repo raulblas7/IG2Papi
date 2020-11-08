@@ -22,5 +22,9 @@ public:
 		mNode->translate(0, -365, 0);
 	}
 	Entity* getEntity() { return plane; }
+
+	virtual void receiveEvent(EntidadIG* entidad) {
+		plane->setMaterialName("Practica1/seco");
+	}
 };
 

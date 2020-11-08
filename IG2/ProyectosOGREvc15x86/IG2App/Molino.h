@@ -10,6 +10,8 @@ private:
 	Ogre::SceneNode* padreFicticio = nullptr;
 	AspasMolino* aspas = nullptr;
 	Ogre::SceneNode* aspasN;
+	bool moveAspas = true;
+	Ogre::Entity* tech = nullptr;
 	//Ogre::SceneManager* mSM;
 	
 public:
@@ -25,11 +27,12 @@ public:
 
 		//creacion del molino
 		aspas = new AspasMolino(aspasN, asps);
+		EntidadIG::addListener(aspas);
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
 			cil->setMaterialName("Practica1/tronco");
 
 		cilindroNode->attachObject(cil);
-		Ogre::Entity* tech = mSM->createEntity("sphere.mesh");
+		tech = mSM->createEntity("sphere.mesh");
 		tech->setMaterialName("Practica1/amarillo");
 
 		sphereNode->attachObject(tech);
@@ -53,9 +56,16 @@ public:
 	};
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {
-		Ogre::Real time = evt.timeSinceLastFrame;
-		int angle = 100 * time;
-		aspas->rotaAspas(angle);
+		if (moveAspas) {
+			Ogre::Real time = evt.timeSinceLastFrame;
+			int angle = 100 * time;
+			aspas->rotaAspas(angle);
+		}
+	};
+
+	virtual void receiveEvent(EntidadIG* entidad) {
+		moveAspas = false;
+		tech->setMaterialName("Practica1/rojo");
 	};
 
 	void aspasRotando() {

@@ -31,6 +31,7 @@ protected:
   Plano* planeteMolino = nullptr;
   Plano* planeteSinbad = nullptr;
   Simbad* simbadete = nullptr;
+  EntidadIG* entidadFict = nullptr;
   Ogre::SceneManager* mSM = nullptr;
   OgreBites::TrayManager* mTrayMgr = nullptr;    
   Ogre::SceneNode* mLightNode = nullptr;
@@ -52,6 +53,7 @@ protected:
   Ogre::SceneNode* planoSinbadNode = nullptr;
   Ogre::SceneNode* molinoNode = nullptr;
   Ogre::SceneNode* avionNode = nullptr;
+  Ogre::SceneNode* cabezaNode = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
   
 };

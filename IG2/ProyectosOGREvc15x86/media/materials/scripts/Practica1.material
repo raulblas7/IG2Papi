@@ -69,3 +69,26 @@ colour_op modulate
 }
 }
 }
+material Practica1/cabeza {
+technique {
+pass {
+diffuse 0.5 0.5 0.5
+texture_unit {
+texture spotlight_image.png
+colour_op modulate
+env_map spherical
+}
+}
+}
+} 
+material Practica1/seco {
+technique {
+pass {
+diffuse 0.5 0.5 0.5
+texture_unit {
+texture BeachStones.jpg
+colour_op add
+}
+}
+}
+}
