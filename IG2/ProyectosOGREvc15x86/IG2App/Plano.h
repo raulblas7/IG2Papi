@@ -24,7 +24,7 @@ public:
 	Entity* getEntity() { return plane; }
 
 	virtual void receiveEvent(EntidadIG* entidad) {
-		plane->setMaterialName("Practica1/seco");
+		//plane->setMaterialName("Practica1/seco");
 	}
 };
 

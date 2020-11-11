@@ -12,6 +12,7 @@ private:
 	Ogre::SceneNode* alaINode;
 	Ogre::SceneNode* alaDNode;
 	Ogre::SceneNode* cuerpoNode;
+	Ogre::SceneNode* luzNode;
 	AspasMolino* helice1;
 	AspasMolino* helice2;
 	Ogre::Light* foco;
@@ -27,6 +28,7 @@ public:
 		frenteNode = mNode->createChildSceneNode("frente");
 		heliceNode1 = mNode->createChildSceneNode("helice1");
 		heliceNode2 = mNode->createChildSceneNode("helice2");
+		luzNode = mNode->createChildSceneNode("luzAvion");
 
 		//creacion del avion
 		Ogre::Entity* cil = mSM->createEntity("Barrel.mesh");
@@ -82,8 +84,9 @@ public:
 		foco->setSpotlightInnerAngle(Ogre::Degree(5.0f));
 		foco->setSpotlightOuterAngle(Ogre::Degree(45.0f));
 		foco->setSpotlightFalloff(0.0f);
-
-		mNode->attachObject(foco);
+		
+		luzNode->attachObject(foco);
+		luzNode->translate(0, -50, 0);
 	}
 	~Avion() {
 		delete helice1; helice1 = nullptr;
@@ -111,8 +114,8 @@ public:
 	};
 
 	virtual void receiveEvent(EntidadIG* entidad) {
-		moveAround = true;
-		foco->setVisible(false);
+		/*moveAround = true;
+		foco->setVisible(false);*/
 	};
 };
 

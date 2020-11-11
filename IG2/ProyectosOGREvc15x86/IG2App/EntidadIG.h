@@ -20,9 +20,9 @@ protected:
 	Ogre::SceneManager* mSM;
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
-		if (evt.keysym.sym == SDLK_r) {
+		/*if (evt.keysym.sym == SDLK_r) {
 			sendEvent(this);
-		}
+		}*/
 		return false;
 	};
 

@@ -64,8 +64,8 @@ public:
 	};
 
 	virtual void receiveEvent(EntidadIG* entidad) {
-		moveAspas = false;
-		tech->setMaterialName("Practica1/rojo");
+		/*moveAspas = false;
+		tech->setMaterialName("Practica1/rojo");*/
 	};
 
 	void aspasRotando() {

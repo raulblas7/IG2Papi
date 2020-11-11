@@ -106,10 +106,10 @@ public:
 	virtual void receiveEvent(EntidadIG* entidad) {
 		//adorno->detachAllObjects();
 	
-		for (int i = 0; i < numAspas; i++)
+		/*for (int i = 0; i < numAspas; i++)
 		{
 			arrayAspas[i]->getAdorno()->setVisible(false, true);
-		}
+		}*/
 	}
 };
 

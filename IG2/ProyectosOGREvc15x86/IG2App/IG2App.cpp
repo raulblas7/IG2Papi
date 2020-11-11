@@ -100,14 +100,14 @@ void IG2App::setupScene(void)
   Light* luz = mSM->createLight("Luz");
   luz->setType(Ogre::Light::LT_DIRECTIONAL);
   luz->setDiffuseColour(0.75, 0.75, 0.75);
-
+  luz->setCastShadows(false);
   mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
  // mLightNode = mCamNode->createChildSceneNode("nLuz");
   mLightNode->attachObject(luz);
 
-  mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
+  mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
   //lightNode->setPosition(0, 0, 1000);
- // mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+  mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
   //------------------------------------------------------------------------
 
   // finally something to render
@@ -261,16 +261,17 @@ void IG2App::setupScene(void)
 	avionNode->translate(-1000, 900, 0);
 	//cabeza
 	
-	cabezaNode = mSM->getRootSceneNode()->createChildSceneNode("Cabeza");
+	/*cabezaNode = mSM->getRootSceneNode()->createChildSceneNode("Cabeza");
 	Ogre::Entity* cabeza= mSM->createEntity("sphere.mesh");
 	cabezaNode->attachObject(cabeza);
 	cabeza->setMaterialName("Practica1/cabeza");
 	cabezaNode->translate(805,-300,-550);
-	cabezaNode->setScale(0.5, 0.5, 0.5);
+	cabezaNode->setScale(0.5, 0.5, 0.5);*/
 
-	Ogre::SceneNode* nodeficti = mSM->getRootSceneNode()->createChildSceneNode("fictisioh");
+	/*Ogre::SceneNode* nodeficti = mSM->getRootSceneNode()->createChildSceneNode("fictisioh");
 	entidadFict = new EntidadIG(nodeficti);
-	addInputListener(entidadFict);
+	addInputListener(entidadFict);*/
+
 
 #pragma endregion
 
