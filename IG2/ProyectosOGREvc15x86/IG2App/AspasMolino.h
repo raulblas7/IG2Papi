@@ -79,10 +79,10 @@ public:
 		if (evt.keysym.sym == SDLK_g) {
 			mNode->roll(Ogre::Degree(10));
 		}
-		else if (evt.keysym.sym == SDLK_c) {
-			//evento que hace el que el cilindro central de las aspas del molino se mete hacia adentro y salga, descomentar aqui y la region Molino de la linea 187
-			cilindroHaciaDentro();
-		}
+		//else if (evt.keysym.sym == SDLK_c) {
+		//	//evento que hace el que el cilindro central de las aspas del molino se mete hacia adentro y salga, descomentar aqui y la region Molino de la linea 187
+		//	cilindroHaciaDentro();
+		//}
 		return true;
 	};
 
@@ -103,13 +103,13 @@ public:
 		}
 	}
 
-	virtual void receiveEvent(EntidadIG* entidad) {
-		//adorno->detachAllObjects();
-	
-		/*for (int i = 0; i < numAspas; i++)
-		{
-			arrayAspas[i]->getAdorno()->setVisible(false, true);
-		}*/
+	virtual void receiveEvent(MessageType message) {
+		if (message == MessageType::R) {
+			for (int i = 0; i < numAspas; i++)
+			{
+				arrayAspas[i]->getAdorno()->setVisible(false, true);
+			}
+		}
 	}
 };
 

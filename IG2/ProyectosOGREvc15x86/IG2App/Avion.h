@@ -16,7 +16,7 @@ private:
 	AspasMolino* helice1;
 	AspasMolino* helice2;
 	Ogre::Light* foco;
-	bool moveAround = false;
+	bool notmoveAround = false;
 	//Ogre::SceneManager* mSM;
 public:
 	Avion(Ogre::SceneNode* mNode): EntidadIG(mNode) {
@@ -106,16 +106,18 @@ public:
 		int angle = 800 * time;
 		helice1->rotaAspas(angle);
 		helice2->rotaAspas(angle);
-		if (!moveAround) {
+		if (!notmoveAround) {
 			mNode->translate(1200, 0, 0, Ogre::Node::TS_LOCAL);
 			mNode->yaw(Ogre::Degree(3));
 			mNode->translate(-1200, 0, 0, Ogre::Node::TS_LOCAL);
 		}
 	};
 
-	virtual void receiveEvent(EntidadIG* entidad) {
-		/*moveAround = true;
-		foco->setVisible(false);*/
+	virtual void receiveEvent(MessageType message) {
+		if (message == MessageType::R) {
+			notmoveAround = true;
+			foco->setVisible(false);
+		}
 	};
 };
 

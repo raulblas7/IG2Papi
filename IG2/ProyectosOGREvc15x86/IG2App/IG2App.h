@@ -11,6 +11,7 @@ class Molino;
 class Plano;
 class EntidadIG;
 class Simbad;
+class Boya;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener 
 {
@@ -31,7 +32,7 @@ protected:
   Plano* planeteMolino = nullptr;
   Plano* planeteSinbad = nullptr;
   Simbad* simbadete = nullptr;
-  EntidadIG* entidadFict = nullptr;
+  Boya* boyete = nullptr;
   Ogre::SceneManager* mSM = nullptr;
   OgreBites::TrayManager* mTrayMgr = nullptr;    
   Ogre::SceneNode* mLightNode = nullptr;
@@ -54,6 +55,7 @@ protected:
   Ogre::SceneNode* molinoNode = nullptr;
   Ogre::SceneNode* avionNode = nullptr;
   Ogre::SceneNode* cabezaNode = nullptr;
+  Ogre::SceneNode* boyaNode = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
   
 };

@@ -5,6 +5,11 @@
 #include <OgreFrameListener.h>
 #include <SDL_keycode.h>
 
+enum class MessageType
+{
+	R, C, E, NONE
+};
+
 class EntidadIG :public OgreBites::InputListener {
 public:
 	//Constructora y destructora
@@ -20,21 +25,19 @@ protected:
 	Ogre::SceneManager* mSM;
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
-		/*if (evt.keysym.sym == SDLK_r) {
-			sendEvent(this);
-		}*/
 		return false;
 	};
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {};
 
-	virtual void receiveEvent(EntidadIG* entidad) {
-		
-	};
+	void sendEvent(MessageType message) {
 
-	void sendEvent(EntidadIG* entidad) {
-		for (EntidadIG* e : appListeners)
-			e->receiveEvent(this);
-	};
+		if (message == MessageType::NONE) return;
+
+		for (EntidadIG* e : EntidadIG::appListeners) {
+			e->receiveEvent(message);
+		}
+	}
+	virtual void receiveEvent(MessageType msg) {};
 };
 

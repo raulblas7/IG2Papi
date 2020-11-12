@@ -43,11 +43,14 @@ public:
 		aspasN->translate(0, 0, 100);
 		sphereNode->translate(0, 350, 0);
 	}
-	~Molino() { delete aspas; aspas = nullptr; };
+	~Molino() { delete aspas; aspas = nullptr;};
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) override {
 		if (evt.keysym.sym == SDLK_h) {
 			aspasRotando();
+		}
+		else if (evt.keysym.sym == SDLK_r) {
+			sendEvent(MessageType::R);
 		}
 		else {
 			aspas->keyPressed(evt);
@@ -63,9 +66,11 @@ public:
 		}
 	};
 
-	virtual void receiveEvent(EntidadIG* entidad) {
-		/*moveAspas = false;
-		tech->setMaterialName("Practica1/rojo");*/
+	virtual void receiveEvent(MessageType message) {
+		if (message == MessageType::R) {
+			moveAspas = false;
+			tech->setMaterialName("Practica1/rojo");
+		}
 	};
 
 	void aspasRotando() {

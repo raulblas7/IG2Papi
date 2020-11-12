@@ -10,6 +10,7 @@
 #include "Plano.h"
 #include "EntidadIG.h"
 #include "Simbad.h"
+#include "Boya.h"
 
 using namespace std;
 using namespace Ogre;
@@ -22,9 +23,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
   }
   else if (evt.keysym.sym == SDLK_h) {
 	  //evento para que el segundero del reloj rote en sentido horario, descomentar aqui y la region reloj de la linea 138
-	 /* mSecondsNode->translate(0, 50, 50, Ogre::Node::TS_LOCAL);
+	  /*mSecondsNode->translate(0, 100, 0, Ogre::Node::TS_LOCAL);
 	  mSecondsNode->roll(Ogre::Degree(-3));
-	  mSecondsNode->translate(0, -50, -50, Ogre::Node::TS_LOCAL);*/
+	  mSecondsNode->translate(0, -100, 0, Ogre::Node::TS_LOCAL);*/
   }
   else if (evt.keysym.sym == SDLK_j) {
 	  //evento de movimiento de rotacion de la tierra alrededor del sol y de la luna alrededor de la tierra, descomentar aqui y region TierraySol linea 192
@@ -167,14 +168,16 @@ void IG2App::setupScene(void)
 
   //mMinuteNode->translate(0, 100, 0);
   //mHoursNode->translate(60, 5, 0);
-  //mSecondsNode->translate(-50, -50, 0, Ogre::Node::TS_LOCAL);
 
   //mHoursNode->roll(Ogre::Degree(-90));
-  //mSecondsNode->roll(Ogre::Degree(-45));
 
-  //mHoursNode->setScale(0.1, 1.5, 0.1);
-  //mMinuteNode->setScale(0.05, 2, 0.05);
-  //mSecondsNode->setScale(0.02, 2.0, 0.02);
+  /*mHoursNode->setScale(0.1, 1.5, 0.1);
+  mMinuteNode->setScale(0.05, 2, 0.05);
+  mSecondsNode->setScale(0.02, 2.0, 0.02);
+
+  mSecondsNode->roll(Ogre::Degree(-45));
+
+  mSecondsNode->translate(0, -100, 0, Ogre::Node::TS_LOCAL);*/
 
 #pragma endregion
 
@@ -253,6 +256,8 @@ void IG2App::setupScene(void)
 	//Sinbad
 	mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
 	simbadete = new Simbad(mSinbadNode);
+	addInputListener(simbadete);
+	EntidadIG::addListener(simbadete);
 	//Avion
 	avionNode = mSM->getRootSceneNode()->createChildSceneNode("Avion");
 	avioncete = new Avion(avionNode);
@@ -260,18 +265,15 @@ void IG2App::setupScene(void)
 	EntidadIG::addListener(avioncete);
 	avionNode->translate(-1000, 900, 0);
 	//cabeza
-	
-	/*cabezaNode = mSM->getRootSceneNode()->createChildSceneNode("Cabeza");
+	cabezaNode = mSM->getRootSceneNode()->createChildSceneNode("Cabeza");
 	Ogre::Entity* cabeza= mSM->createEntity("sphere.mesh");
 	cabezaNode->attachObject(cabeza);
 	cabeza->setMaterialName("Practica1/cabeza");
 	cabezaNode->translate(805,-300,-550);
-	cabezaNode->setScale(0.5, 0.5, 0.5);*/
-
-	/*Ogre::SceneNode* nodeficti = mSM->getRootSceneNode()->createChildSceneNode("fictisioh");
-	entidadFict = new EntidadIG(nodeficti);
-	addInputListener(entidadFict);*/
-
+	cabezaNode->setScale(0.5, 0.5, 0.5);
+	//Boya
+	boyaNode = mSM->getRootSceneNode()->createChildSceneNode("Boya");
+	boyete = new Boya(boyaNode);
 
 #pragma endregion
 

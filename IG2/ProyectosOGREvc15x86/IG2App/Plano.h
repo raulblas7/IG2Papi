@@ -21,10 +21,17 @@ public:
 		mNode->attachObject(plane);
 		mNode->translate(0, -365, 0);
 	}
+
+	~Plano() {
+		delete plane; plane = nullptr;
+	}
+
 	Entity* getEntity() { return plane; }
 
-	virtual void receiveEvent(EntidadIG* entidad) {
-		//plane->setMaterialName("Practica1/seco");
+	virtual void receiveEvent(MessageType message) {
+		if (message == MessageType::R) {
+			plane->setMaterialName("Practica1/seco");
+		}
 	}
 };
 
