@@ -274,6 +274,7 @@ void IG2App::setupScene(void)
 	//Boya
 	boyaNode = mSM->getRootSceneNode()->createChildSceneNode("Boya");
 	boyete = new Boya(boyaNode);
+	addInputListener(boyete);
 
 #pragma endregion
 

@@ -131,7 +131,6 @@
     <ClInclude Include="Simbad.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Boya.cpp" />
     <ClCompile Include="EntidadIG.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
