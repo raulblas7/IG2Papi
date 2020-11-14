@@ -18,7 +18,7 @@ private:
 	AnimationState* animationState4;
 	bool baile = false;
 	bool dcha = true;
-	int duracion = 16;
+	int duracion = 6;
 	int longDesplazamiento = 300;
 public:
 	Simbad(Ogre::SceneNode* node) : EntidadIG(node) {
@@ -26,7 +26,7 @@ public:
 		mNode->attachObject(entSin);
 		mNode->scale(30, 30, 30);
 		mNode->translate(-600, -190, 600);
-		mNode->rotate((Ogre::Quaternion(sqrt(0.25),0, sqrt(0.25), 0)));
+		//mNode->rotate(Quaternion(Degree(135.0), Vector3(0, 1, 0)));
 		//apartado 32
 		//animacion de baile
 		animationState = entSin->getAnimationState("Dance");
@@ -55,23 +55,30 @@ public:
 
 		Real durPaso = duracion / 5.0;
 		mNode->setInitialState();
-		Vector3 keyframePos; 
-		Ogre::Vector3 src(0, 0, 1);
+		Vector3 keyframePos(600,0,-600);
+		double g=135.0 ;
+		
 		TransformKeyFrame* kf; // 4 keyFrames: origen(0), abajo, arriba, origen(3)
 		kf = track->createNodeKeyFrame(durPaso * 0); // Keyframe 0: origen
-		//kf->setRotation(src.getRotationTo(Vector3(1, 0, -1))); // Yaw(45)
 		
-		//kf = track->createNodeKeyFrame(durPaso * 1); // Keyframe 1: gira
-
+		kf = track->createNodeKeyFrame(durPaso * 1); // Keyframe 2: centro plano
+		kf->setRotation(Quaternion(Degree(g), Vector3(0, 1, 0))); // Yaw(45)
 
 		kf = track->createNodeKeyFrame(durPaso * 2); // Keyframe 2: centro plano
-		keyframePos = Vector3(600,0,-600);
+		kf->setTranslate(keyframePos); // Abajo
+		kf->setRotation(Quaternion(Degree(g), Vector3(0, 1, 0)));
+
+
+		kf = track->createNodeKeyFrame(durPaso * 3); // Keyframe 3: gira
+		g += 180.0;
+		kf->setRotation(Quaternion(Degree(g), Vector3(0, 1, 0)));
 		kf->setTranslate(keyframePos); // Abajo
 
-		//kf = track->createNodeKeyFrame(durPaso * 3); // Keyframe 3: gira
-		//kf->setRotation(src.getRotationTo(Vector3(-1, 0, 1))); // Yaw(45)
+		kf = track->createNodeKeyFrame(durPaso * 4); // Keyframe 3: gira
+		kf->setRotation(Quaternion(Degree(g), Vector3(0, 1, 0)));
 
-		kf = track->createNodeKeyFrame(durPaso * 4); // Keyframe 4: origen
+		kf = track->createNodeKeyFrame(durPaso * 5); // Keyframe 4: origen
+
 
 		animationState4 = mSM->createAnimationState("caminaAgua");
 		animationState4->setLoop(true);
