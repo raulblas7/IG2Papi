@@ -49,6 +49,7 @@ public:
 		espadica = mSM->createEntity("Sword.mesh");
 		entSin->attachObjectToBone("Handle.R", espadica);
 
+		//animacion caminar por agua
 		Animation* animation = mSM->createAnimation("caminaAgua", duracion);
 		NodeAnimationTrack* track = animation->createNodeTrack(0);
 		track->setAssociatedNode(mNode);
