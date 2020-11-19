@@ -16,6 +16,7 @@ private:
 	AnimationState* animationState2;
 	AnimationState* animationState3;
 	AnimationState* animationState4;
+	AnimationState* animationState5;
 	bool baile = false;
 	bool dcha = true;
 	int duracion = 6;
@@ -30,7 +31,7 @@ public:
 		//apartado 32
 		//animacion de baile
 		animationState = entSin->getAnimationState("Dance");
-		animationState->setEnabled(true);
+		animationState->setEnabled(false);
 		animationState->setLoop(true);
 
 		//apartado 33
@@ -43,6 +44,12 @@ public:
 		animationState3 = entSin->getAnimationState("RunTop");
 		animationState3->setEnabled(true);
 		animationState3->setLoop(true);
+
+		//animacion run top
+		animationState5 = entSin->getAnimationState("IdleTop");
+		animationState5->setEnabled(false);
+		animationState5->setLoop(true);
+
 
 		//apartado35
 		//espada
@@ -107,10 +114,10 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {
 		//apartado 32
 		//dance
-		if (baile) {
+		if (animationState->getEnabled()) {
 			animationState->addTime(evt.timeSinceLastFrame);
 		}
-		else {
+		else if(animationState2->getEnabled()) {
 			//apartado 33
 			//run base
 			animationState2->addTime(evt.timeSinceLastFrame);
@@ -118,16 +125,19 @@ public:
 			animationState3->addTime(evt.timeSinceLastFrame);
 			//run across rio
 			animationState4->addTime(evt.timeSinceLastFrame);
-
+		}
+		else {
+			animationState5->addTime(evt.timeSinceLastFrame);
 		}
 	};
 
 	virtual void receiveEvent(MessageType message) {
 		if (message == MessageType::C && !baile) {
-			baile = true;
+			animationState->setEnabled(true);
 		}
 		else if (message == MessageType::C && baile) {
-			baile = false;
+			animationState->setEnabled(false);
+			animationState2->setEnabled(true);
 		}
 		else if (message == MessageType::E) {
 			entSin->detachObjectFromBone(espadica);
@@ -140,6 +150,20 @@ public:
 				dcha = true;
 			}
 		}
+		else if (message == MessageType::R && !animationState5->getEnabled()) 
+		{
+				animationState5->setEnabled(true);
+				animationState4->setEnabled(false);
+				animationState3->setEnabled(false);
+				animationState2->setEnabled(false);
+				animationState->setEnabled(false);
+				//simbad se cae bocarriba
+				mNode->pitch(Ogre::Degree(90.0));
+				mNode->yaw(Ogre::Degree(180.0));
+				mNode->translate(Vector3(0, -150, 0));
+
+		}
+		
 	};
 };
 

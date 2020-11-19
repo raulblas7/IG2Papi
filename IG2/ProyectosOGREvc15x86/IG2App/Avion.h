@@ -1,5 +1,10 @@
 #pragma once
 #include "AspasMolino.h"
+#include <OgreBillboard.h>
+#include <OgreBillboardParticleRenderer.h>
+#include <OgreParticle.h>
+#include <OgreParticleSystem.h>
+using namespace Ogre;
 
 class Avion : public EntidadIG
 {
@@ -13,13 +18,16 @@ private:
 	Ogre::SceneNode* alaDNode;
 	Ogre::SceneNode* cuerpoNode;
 	Ogre::SceneNode* luzNode;
+	Ogre::SceneNode* mPSNode;
 	AspasMolino* helice1;
 	AspasMolino* helice2;
 	Ogre::Light* foco;
 	bool notmoveAround = false;
-	//Ogre::SceneManager* mSM;
+	BillboardSet* bbSet = nullptr;
+	ParticleSystem* pSys;
+	ParticleSystem* estela;
 public:
-	Avion(Ogre::SceneNode* mNode): EntidadIG(mNode) {
+	Avion(Ogre::SceneNode* mNode) : EntidadIG(mNode) {
 		//inicializando los SceneNode
 		cuerpoNode = mNode->createChildSceneNode("cuerpoav");
 		alaDNode = mNode->createChildSceneNode("alaD");
@@ -84,10 +92,30 @@ public:
 		foco->setSpotlightInnerAngle(Ogre::Degree(5.0f));
 		foco->setSpotlightOuterAngle(Ogre::Degree(45.0f));
 		foco->setSpotlightFalloff(0.0f);
-		
+
 		luzNode->attachObject(foco);
 		luzNode->translate(0, -50, 0);
+
+		//Cartel
+		bbSet = mSM->createBillboardSet("cartel", 10);
+		bbSet->setDefaultDimensions(100, 60);
+
+		bbSet->setMaterialName("IG2App/Panel");
+		mNode->attachObject(bbSet);
+		Billboard* bb = bbSet->createBillboard(mNode->getPosition() + Vector3(0, 0, -150));
+        //Explosion
+		 pSys = mSM ->
+			createParticleSystem("psSmoke", "IG2App/Explosion");
+	     estela = mSM ->
+			createParticleSystem("psEstela", "IG2App/SmokeTrail");
+
+		estela->setEmitting(true);
+		pSys->setEmitting(false);
+		mPSNode = mSM->getRootSceneNode()->createChildSceneNode("mPSNode");
+		mPSNode->attachObject(pSys);
+		mNode->attachObject(estela);
 	}
+
 	~Avion() {
 		delete helice1; helice1 = nullptr;
 		delete helice2; helice2 = nullptr;
@@ -117,7 +145,11 @@ public:
 		if (message == MessageType::R) {
 			notmoveAround = true;
 			foco->setVisible(false);
+			mNode->setVisible(false);
+			mPSNode->setPosition(mNode->getPosition());
+			pSys->setEmitting(true);
 		}
+		
 	};
 };
 
