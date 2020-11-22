@@ -57,6 +57,7 @@ public:
 			aspa = mSM->getSceneNode(aspasName)->createChildSceneNode(n3);
 			tablero = mSM->getSceneNode(n3)->createChildSceneNode(n);
 			adorno = mSM->getSceneNode(n3)->createChildSceneNode(n2);
+			adorno->setInheritOrientation(false);
 			arrayAspas[i] = new Aspa(aspa, tablero, adorno);
 		}
 		//colocacion aspas y adornos

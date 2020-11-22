@@ -476,32 +476,22 @@ C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(1174,35): warning C4251: 'OgreBites::TrayManager::mWidgetDeathRow': class 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OgreBites::TrayManager'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(189): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Aspa.h(28,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(64,20): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(90,28): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(65,20): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(91,28): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(41,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(42,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(64,14): warning C4244: 'inicializando': conversión de 'Ogre::Real' a 'int'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(22,14): error C2143: error de sintaxis: falta ';' delante de '*'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(22,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(22,21): error C2238: símbolos (token) inesperados delante de ';'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(66,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(67,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(75,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(78,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(94,3): error C2065: 'bbSet': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(95,3): error C2065: 'bbSet': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(97,3): error C2065: 'bbSet': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(98,23): error C2065: 'bbSet': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(99,3): error C2065: 'Billboard': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(99,14): error C2065: 'bb': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(99,19): error C2065: 'bbSet': identificador no declarado
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(117,13): warning C4244: 'inicializando': conversión de 'Ogre::Real' a 'int'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(53,61): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(57,16): warning C4244: 'inicializando': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(66,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(70,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(75,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(79,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(72,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(73,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(81,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(84,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Avion.h(134,13): warning C4244: 'inicializando': conversión de 'Ogre::Real' a 'int'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(60,61): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(64,16): warning C4244: 'inicializando': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(73,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(77,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(82,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Simbad.h(86,37): warning C4244: 'argumento': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Boya.h(23,57): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Boya.h(27,16): warning C4244: 'inicializando': conversión de 'double' a 'Ogre::Real'; posible pérdida de datos
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Boya.h(34,51): warning C4244: 'argumento': conversión de 'int' a 'const Ogre::Real'; posible pérdida de datos
@@ -510,3 +500,4 @@ C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.c
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(245,38): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(246,41): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(255,36): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
+OgreMain.lib(OgreMain.dll) : fatal error LNK1112: tipo de equipo del módulo 'x86' en conflicto con tipo de equipo de destino 'x64'

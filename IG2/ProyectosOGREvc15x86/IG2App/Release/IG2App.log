@@ -476,8 +476,8 @@ C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(1174,35): warning C4251: 'OgreBites::TrayManager::mWidgetDeathRow': class 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OgreBites::TrayManager'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\OgreTrays.h(189): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Aspa.h(28,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(64,20): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(90,28): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(65,20): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\AspasMolino.h(91,28): warning C4244: 'argumento': conversión de 'int' a 'Ogre::Real'; posible pérdida de datos
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(41,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(42,1): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Molino.h(64,14): warning C4244: 'inicializando': conversión de 'Ogre::Real' a 'int'; posible pérdida de datos
@@ -501,9 +501,9 @@ C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.c
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(246,41): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(255,36): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
   Generando código
-  0 of 718 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  3 of 718 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
 SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB 'SDL2main.pdb' con 'SDL2main.lib(SDL_windows_main.obj)' o en 'C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\bin\SDL2main.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   IG2App.vcxproj -> C:\Users\forev\OneDrive\Desktop\IG2Papi\IG2\ProyectosOGREvc15x86\bin\IG2AppRelease.exe
