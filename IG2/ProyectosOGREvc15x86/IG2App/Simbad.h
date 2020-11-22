@@ -45,7 +45,7 @@ public:
 		animationState3->setEnabled(true);
 		animationState3->setLoop(true);
 
-		//animacion run top
+		//animacion IdleTop
 		animationState5 = entSin->getAnimationState("IdleTop");
 		animationState5->setEnabled(false);
 		animationState5->setLoop(true);
@@ -132,12 +132,19 @@ public:
 	};
 
 	virtual void receiveEvent(MessageType message) {
-		if (message == MessageType::C && !baile) {
+		if (message == MessageType::C && !animationState->getEnabled()) {
 			animationState->setEnabled(true);
+		    animationState2->setEnabled(false);
+			animationState3->setEnabled(false);
+			animationState4->setEnabled(false);
+			animationState5->setEnabled(false);
+
 		}
-		else if (message == MessageType::C && baile) {
+		else if (message == MessageType::C && animationState->getEnabled()) {
 			animationState->setEnabled(false);
 			animationState2->setEnabled(true);
+			animationState3->setEnabled(true);
+			animationState4->setEnabled(true);
 		}
 		else if (message == MessageType::E) {
 			entSin->detachObjectFromBone(espadica);
