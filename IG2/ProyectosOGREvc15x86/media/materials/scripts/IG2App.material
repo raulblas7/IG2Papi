@@ -31,3 +31,32 @@ tex_address_mode clamp
 }
 }
 }
+
+material IG2App/space{
+technique {
+pass {
+texture_unit { // Texture unit 0
+texture lightMap.jpg
+color_op add
+}
+texture_unit { // Texture unit 1
+texture spaceSky.jpg
+colour_op add // Los colores de esta imagen se suman con …
+scroll_anim -0.01 0.0
+}
+}
+} } 
+material IG2App/reflejo{
+technique {
+pass {
+texture_unit { // Texture unit 0
+texture BeachStones.jpg
+color_op add
+}
+texture_unit { // Texture unit 1
+texture Water02.jpg
+colour_op modulate
+scroll_anim -0.1 0.0
+}
+}
+} } 

@@ -85,7 +85,7 @@ public:
 		heliceNode2->translate(300, 0, 100);
 
 		//luz
-		foco = mSM->createLight("Luz Foco");
+		/*foco = mSM->createLight("Luz Foco");
 		foco->setType(Ogre::Light::LT_SPOTLIGHT);
 		foco->setDiffuseColour(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
 		foco->setDirection(Ogre::Vector3(1, -1, 0));
@@ -94,7 +94,7 @@ public:
 		foco->setSpotlightFalloff(0.0f);
 
 		luzNode->attachObject(foco);
-		luzNode->translate(0, -50, 0);
+		luzNode->translate(0, -50, 0);*/
 
 		//Cartel
 		bbSet = mSM->createBillboardSet("cartel", 10);

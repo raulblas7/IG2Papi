@@ -93,14 +93,28 @@ void IG2App::setupScene(void)
   
   // and tell it to render into the main window
   Viewport* vp = getRenderWindow()->addViewport(cam);
-  vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+  vp->setBackgroundColour(Ogre::ColourValue(0.0, 0.0, 0.0));
 
+  //CAMARA REFLEJO
+
+  Camera* camRef = mSM->createCamera("CamRef");     // camara para hacer el reflejo
+  camRef->setNearClipDistance(1);                   // mismo frustum y mismo nodo que la camara principal
+  camRef->setFarClipDistance(10000);                // asi actualiza su posicion en funcion de como movamos la principal
+  camRef->setAutoAspectRatio(true);
+
+  mCamNode->attachObject(camRef);
+
+  mCamMgr = new OgreBites::CameraMan(mCamNode);
+  addInputListener(mCamMgr);
+  mCamMgr->setStyle(OgreBites::CS_ORBIT);
+  // mCamMgr->setTarget(mSinbadNode);
+  //mCamMgr->setYawPitchDist(Radian(0), Degree(30), 100);
   //------------------------------------------------------------------------
 
   // without light we would just get a black screen 
   Light* luz = mSM->createLight("Luz");
   luz->setType(Ogre::Light::LT_DIRECTIONAL);
-  luz->setDiffuseColour(0.75, 0.75, 0.75);
+  luz->setDiffuseColour(/*0.75*/ 1.0, /*0.75*/ 1.0,/* 0.75*/ 1.0);
   luz->setCastShadows(false);
   mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
  // mLightNode = mCamNode->createChildSceneNode("nLuz");
@@ -108,7 +122,8 @@ void IG2App::setupScene(void)
 
   mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
   //lightNode->setPosition(0, 0, 1000);
-  mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+  //sombras
+ // mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
   //------------------------------------------------------------------------
 
   // finally something to render
@@ -225,27 +240,37 @@ void IG2App::setupScene(void)
 #pragma endregion
 
 #pragma region Apartado23
+
+	//SkyPlane
+	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -80), "IG2App/space", 1, 1, true, 1.0, 10, 10);
+
+	//linea comentada para que el plano este a 200 de distancia y sin curvatura
+	//mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -200), "IG2App/space", 1, 1, true, 0.0, 10, 10);
+
 	//Planos
 	planoNode = mSM->getRootSceneNode()->createChildSceneNode("plano");
 	
 	planete = new Plano(planoNode, 0);
-	planete->getEntity()->setMaterialName("Practica1/agua");
+	planete->getEntity()->setMaterialName("IG2App/reflejo");
 	EntidadIG::addListener(planete);
+
+	planete->setReflejo(camRef);
+
 
 	planoMolNode = mSM->getRootSceneNode()->createChildSceneNode("planoMolino");
 
 	planeteMolino = new Plano(planoMolNode, 1);
 	planeteMolino->getEntity()->setMaterialName("Practica1/naranja");
 
-	planoSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("planoSinbad");
+	/*planoSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("planoSinbad");
 
 	planeteSinbad = new Plano(planoSinbadNode, 2);
-	planeteSinbad->getEntity()->setMaterialName("Practica1/rojo");
+	planeteSinbad->getEntity()->setMaterialName("Practica1/rojo");*/
 
 	planoMolNode->setScale(0.2, 0.2, 0.2);
-	planoSinbadNode->setScale(0.4, 0.4, 0.4);
+	//planoSinbadNode->setScale(0.4, 0.4, 0.4);
 	planoMolNode->translate(700, 20, -700);
-	planoSinbadNode->translate(-600, 20, 520);
+	//planoSinbadNode->translate(-600, 20, 520);
 	//Molino
 	molinoNode = mSM->getRootSceneNode()->createChildSceneNode("molino");
 	molinete = new Molino(6, molinoNode);
