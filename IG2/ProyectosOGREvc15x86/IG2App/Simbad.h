@@ -21,6 +21,7 @@ private:
 	bool dcha = true;
 	int duracion = 6;
 	int longDesplazamiento = 300;
+	bool stop = false;
 public:
 	Simbad(Ogre::SceneNode* node) : EntidadIG(node) {
 		entSin = mSM->createEntity("Sinbad.mesh");
@@ -99,6 +100,8 @@ public:
 		delete animationState; animationState = nullptr;
 		delete animationState2; animationState2 = nullptr;
 		delete animationState3; animationState3 = nullptr;
+		delete animationState4; animationState4 = nullptr;
+		delete animationState5; animationState5 = nullptr;
 	}
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) override {
@@ -113,26 +116,17 @@ public:
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {
 		//apartado 32
-		//dance
-		if (animationState->getEnabled()) {
-			animationState->addTime(evt.timeSinceLastFrame);
-		}
-		else if(animationState2->getEnabled()) {
-			//apartado 33
-			//run base
-			animationState2->addTime(evt.timeSinceLastFrame);
-			//run top
-			animationState3->addTime(evt.timeSinceLastFrame);
-			//run across rio
-			animationState4->addTime(evt.timeSinceLastFrame);
-		}
-		else {
-			animationState5->addTime(evt.timeSinceLastFrame);
-		}
+		
+		if (animationState->getEnabled())animationState->addTime(evt.timeSinceLastFrame);
+		 if (animationState2->getEnabled())animationState2->addTime(evt.timeSinceLastFrame);
+		 if (animationState3->getEnabled())animationState3->addTime(evt.timeSinceLastFrame);
+		 if (animationState4->getEnabled())animationState4->addTime(evt.timeSinceLastFrame);
+		 if (animationState5->getEnabled())animationState5->addTime(evt.timeSinceLastFrame);
+		
 	};
 
 	virtual void receiveEvent(MessageType message) {
-		if (message == MessageType::C && !animationState->getEnabled()) {
+		if (message == MessageType::C && !animationState->getEnabled() && !stop ) {
 			animationState->setEnabled(true);
 		    animationState2->setEnabled(false);
 			animationState3->setEnabled(false);
@@ -140,13 +134,13 @@ public:
 			animationState5->setEnabled(false);
 
 		}
-		else if (message == MessageType::C && animationState->getEnabled()) {
+		else if (message == MessageType::C && animationState->getEnabled() && !stop) {
 			animationState->setEnabled(false);
 			animationState2->setEnabled(true);
 			animationState3->setEnabled(true);
 			animationState4->setEnabled(true);
 		}
-		else if (message == MessageType::E) {
+		else if (message == MessageType::E && !stop) {
 			entSin->detachObjectFromBone(espadica);
 			if (dcha) {
 				entSin->attachObjectToBone("Handle.L", espadica);
@@ -168,7 +162,7 @@ public:
 				mNode->pitch(Ogre::Degree(90.0));
 				mNode->yaw(Ogre::Degree(180.0));
 				mNode->translate(Vector3(0, -150, 0));
-
+				stop = true;
 		}
 		
 	};

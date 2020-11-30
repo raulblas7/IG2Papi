@@ -37,12 +37,15 @@ technique {
 pass {
 texture_unit { // Texture unit 0
 texture lightMap.jpg
-color_op add
+color_op modulate
+tex_coord_set 0
 }
 texture_unit { // Texture unit 1
 texture spaceSky.jpg
 colour_op add // Los colores de esta imagen se suman con …
 scroll_anim -0.01 0.0
+tex_address_mode mirror
+tex_coord_set 0
 }
 }
 } } 
@@ -51,12 +54,13 @@ technique {
 pass {
 texture_unit { // Texture unit 0
 texture BeachStones.jpg
-color_op add
+tex_coord_set 0
+
 }
 texture_unit { // Texture unit 1
 texture Water02.jpg
-colour_op modulate
 scroll_anim -0.1 0.0
+tex_coord_set 0
 }
 }
 } } 

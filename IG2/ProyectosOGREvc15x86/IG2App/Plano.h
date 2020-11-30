@@ -86,13 +86,13 @@ public:
 	}
 
 	// nos avisa antes del renderizado
-	void preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
+	 virtual void preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 		plane->setVisible(false);                               // oculta el panel (la entidad) y pone luz ambiente
 		mNode->getCreator()->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
 	}
 
 	// nos avisa despues del renderizado
-	void postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
+	 virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 		plane->setVisible(true);                                // restablece los cambios
 		mNode->getCreator()->setAmbientLight(ColourValue(0, 0, 0));
 	}

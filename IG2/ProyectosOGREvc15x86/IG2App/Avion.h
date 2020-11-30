@@ -144,7 +144,7 @@ public:
 	virtual void receiveEvent(MessageType message) {
 		if (message == MessageType::R) {
 			notmoveAround = true;
-			foco->setVisible(false);
+			//foco->setVisible(false);
 			mNode->setVisible(false);
 			mPSNode->setPosition(mNode->getPosition());
 			pSys->setEmitting(true);
