@@ -31,8 +31,11 @@
 *.out
 *.app
 
-*.log
+
 *.tlog
 *.pdb
 *.ipdb
 *.iobj
+*.suo
+*.db
+*.log
