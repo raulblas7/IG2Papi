@@ -46,31 +46,25 @@ randomness 500
 
 particle_system IG2App/SmokeTrail
 { // p. s. attributes
-   renderer billboard
-   billboard_type oriented_self
-   particle_width 150
-   particle_height 150
-   colour 0.8 0.8 0.8 0.5
-   quota 1000
-   material IG2App/Smoke
-
-emitter Point
-  { // e. attributes
-     direction 1 0 0
-     angle 90
-     emission_rate 150
-     time_to_live 0.5
-  }
-
-  
-affector Scaler
-  { // a. attributes
-     
-  }
-affector ColourFader
-  {
-        alpha -0.25
-  }
-
+    renderer billboard
+    billboard_type point
+    particle_width 100
+    particle_height 100
+    quota 500
+    sorted true
+    material IG2App/Smoke
+    emitter Point
+    { // e. attributes
+        colour 0.8 0.8 0.8 0.80
+        direction 0 0 0
+        angle 0
+        emission_rate 100
+        time_to_live 0.8
+        velocity_min 12
+        velocity_max 14
+    }
+    affector ColourFader
+    { // a. attributes
+        alpha -0.7
+    }
 }
-

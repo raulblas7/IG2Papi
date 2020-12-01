@@ -82,7 +82,6 @@ public:
 		tu->setProjectiveTexturing(true, cam);
 
 		renderTexture->addListener(this);
-
 	}
 
 	// nos avisa antes del renderizado
