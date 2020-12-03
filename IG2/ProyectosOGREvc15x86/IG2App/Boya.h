@@ -15,10 +15,9 @@ private:
 	int  longDesplazamiento=100;
 public:
 	Boya(Ogre::SceneNode* node) : EntidadIG(node) {
-		entBoya = mSM->createEntity("Barrel.mesh");
-		entBoya->setMaterialName("Practica1/alas");
+		entBoya = mSM->createEntity("uv_sphere.mesh");
+		entBoya->setMaterialName("practicaGLSL/Holes");
 		mNode->attachObject(entBoya);
-		mNode->scale(30, 30, 30);
 
 		Animation* animation = mSM->createAnimation("animVV", duracion);
 		NodeAnimationTrack* track = animation->createNodeTrack(0);

@@ -242,7 +242,7 @@ void IG2App::setupScene(void)
 #pragma region Apartado23
 
 	//SkyPlane
-	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -80), "IG2App/space", 1, 1, true, 1.0, 10, 10);
+	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -80), "practicaGLSL/spaceGLSL", 1, 1, true, 1.0, 10, 10);
 
 	//linea comentada para que el plano este a 200 de distancia y sin curvatura
 	//mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -200), "IG2App/space", 1, 1, true, 0.0, 10, 10);
@@ -299,6 +299,7 @@ void IG2App::setupScene(void)
 	//Boya
 	boyaNode = mSM->getRootSceneNode()->createChildSceneNode("Boya");
 	boyete = new Boya(boyaNode);
+	
 	addInputListener(boyete);
 
 #pragma endregion

@@ -1,0 +1,93 @@
+vertex_program SpaceVS glsl //nombre para el shader
+{
+source SpaceVS.glsl // nombre del archivo del código
+default_params // valores para las variable uniform
+{
+param_named_auto modelViewProjMat worldviewproj_matrix
+param_named_auto time time_0_1 25 // ciclo 25->para el zoom
+}
+}
+
+
+fragment_program SpaceFS glsl //nombre para el shader
+{
+source SpaceFS.glsl // nombre del archivo del código
+default_params // valores para las variable uniform
+{
+param_named texturaL int 0 // 1º unidad de textura ‐> *
+param_named texturaM int 1 // 2º unidad de textura ‐> *
+param_named BF float 0.5
+param_named intLuzAmb float 1.0
+}
+}
+
+
+material practicaGLSL/spaceGLSL
+{
+technique {
+pass {
+vertex_program_ref SpaceVS 
+{ // params ‐> default_params
+}
+fragment_program_ref SpaceFS 
+{ // params ‐> default_params
+}
+texture_unit { // Texture unit 0
+texture lightMap.jpg 2d
+ tex_address_mode wrap
+}
+texture_unit { // Texture unit 1
+texture spaceSky.jpg 2d
+filtering bilinear
+}
+}
+} 
+}
+
+vertex_program HolesVS glsl
+{
+    source HolesVS.glsl // archivo código vertex shader
+    default_params // valores para las variables uniform
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto normalMat inverse_transpose_world_matrix
+    }
+}
+
+fragment_program HolesFS glsl
+{
+    source HolesFS.glsl // archivo código fragment shader
+    default_params // valores para las variables uniform
+    {
+        param_named texture1 int 0 // unidad de textura
+        param_named color_back float3 0.6.0 0.3 0.1
+        param_named color_front float3 0.0 0.6 0.0
+        param_named_auto lightPos light_position 0 
+        param_named_auto intLuz light_diffuse_colour 0
+    }
+}
+
+material practicaGLSL/Holes 
+{
+    technique
+    {
+        pass
+        {
+            cull_hardware none  // para indicar que se rendericen ambas caras
+            cull_software none
+            vertex_program_ref HolesVS
+            { // params ‐> default_params
+            }
+            fragment_program_ref HolesFS
+            { // params ‐> default_params
+            }
+            texture_unit {
+                texture corrosion.jpg 2d // archivo
+            }
+            texture_unit { // Texture unit 1
+                texture BumpyMetal.jpg 2d
+                filtering bilinear
+             }
+}
+}
+}  
