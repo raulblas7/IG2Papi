@@ -58,7 +58,8 @@ fragment_program HolesFS glsl
     default_params // valores para las variables uniform
     {
        param_named textura1 int 0 // unidad de textura
-        param_named color_back float3 0.6 0.0 0.3 
+       param_named textura2 int 1 // unidad de textura
+        param_named color_back float3 1.0 1.0 0.0 
         param_named color_front float3 0.0 0.6 0.0
         param_named_auto lightPos light_position 0 
         param_named_auto intLuz light_diffuse_colour 0
@@ -85,6 +86,7 @@ material practicaGLSL/Holes
             }
             texture_unit {
                 texture BumpyMetal.jpg 2d // archivo
+                filtering bilinear
                 
             }
         
