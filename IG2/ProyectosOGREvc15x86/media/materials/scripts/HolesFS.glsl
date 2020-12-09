@@ -10,8 +10,8 @@ in vec3 Normal;
 uniform sampler2D textura1; // tipo sampler2D para texturas 2D
 uniform sampler2D textura2; // tipo sampler2D para texturas 2D
 
-uniform vec3 OutColor;   // color del que se pintara la parte de fuera
-uniform vec3 InColor;    // color del que se pintara la parte de dentro
+uniform vec4 OutColor;   // color del que se pintara la parte de fuera
+uniform vec4 InColor;    // color del que se pintara la parte de dentro
 
 
 uniform vec4 lightPos;      // direccion de la luz (considerada como vector)
@@ -20,16 +20,6 @@ uniform vec4 intLuz;        // intensidad de luz
 out vec4 fFragColor; // out del fragment shader
 
 
-float diff(float cVertex, float cNormal)
-{
-//vec3 lightDir = lightPosition.xyz; // directional light ?
-//if (lightPosition.w == 1) // positional light ?
-//lightDir = lightPosition.xyz ‐ cVertex;
-//return max(dot(cNormal, normalize(lightDir)), 0.0);
-// dot: coseno ángulo
-return 1.0;
-}
-
 void main() {
 	vec3 color = vec3(texture(textura1, vUv0));
 	vec3 color2 = vec3(texture(textura2, vUv1));
@@ -37,7 +27,7 @@ void main() {
 	 if(color.x > 0.5) discard;         // si el texel cumple esta caracteristica, salimos y no se pinta (como un return)
  
  vec3 norm ;
- vec3 col;
+ vec4 col;
  vec3 colTex;
  if(gl_FrontFacing){ 
 	 norm = -normalize(Normal);
@@ -50,9 +40,10 @@ void main() {
     col=InColor;
     colTex=color;
 }
+
         vec3 lightDir = normalize(vec3(lightPos));
         float diff = max(0.0,dot(norm, lightDir));
         vec3 diffuse = vec3(intLuz) * diff;
-    fFragColor = vec4(col*colTex*diffuse  , 1.0);       
+    fFragColor = vec4(vec3(col) *colTex*diffuse  , 1.0);       
 }
 
