@@ -64,6 +64,11 @@ fragment_program HolesFS glsl
         param_named OutColor float4 0.0 0.6 0.0 1.0
         param_named_auto lightPos light_position 0 
         param_named_auto intLuz light_diffuse_colour 0
+        param_named lightAmbient float3 0.5 0.5 0.5
+         param_named_auto lightDiffuse light_diffuse_colour 0
+        param_named_auto materialDiffuse surface_diffuse_color // del script
+        param_named_auto modelViewMat worldview_matrix
+        param_named_auto normalMat transpose_worldview_matrix
     }
 }
 

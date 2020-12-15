@@ -501,7 +501,7 @@ C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\Boya.h(38,42)
 C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(270,38): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
 C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\IG2App\IG2App.cpp(280,36): warning C4305: 'argumento': truncamiento de 'double' a 'Ogre::Real'
   Generando código
-  2 of 740 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  0 of 740 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
