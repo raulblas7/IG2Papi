@@ -4,7 +4,8 @@ source SpaceVS.glsl // nombre del archivo del código
 default_params // valores para las variable uniform
 {
 param_named_auto modelViewProjMat worldviewproj_matrix
-param_named_auto time sintime_0_2pi 60
+param_named_auto sinTime sintime_0_2pi 32
+
 
 }
 }
@@ -70,7 +71,7 @@ fragment_program HolesFS glsl
         param_named_auto     lightPos           light_position              0 
         param_named_auto     lightAmbient       ambient_light_colour 
         param_named_auto     lightDiffuse       light_diffuse_colour        0
-        param_named          materialDiffuse    float3 0.5 0.5 0.5
+        param_named          materialDiffuse    float3 0.6 0.6 0.6
     }
 }
 

@@ -362,3 +362,4 @@ C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE
 C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\OgreSGTechniqueResolverListener.h(47,93): warning C4275: se ha utilizado una interfaz no de DLL class 'Ogre::MaterialManager::Listener' como base para la interfaz DLL class 'OgreBites::SGTechniqueResolverListener'
 C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\OgreMaterialManager.h(69): message : vea la declaración de 'Ogre::MaterialManager::Listener'
 C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\OgreSGTechniqueResolverListener.h(47): message : vea la declaración de 'OgreBites::SGTechniqueResolverListener'
+C:\Users\anass\Desktop\IG2\IG2Papi\IG2\ProyectosOGREvc15x86\OGREsdk\include\OGRE\Bites\SDLInputMapping.h(66,46): warning C4244: '=': conversión de 'const SDL_FingerID' a 'int'; posible pérdida de datos
