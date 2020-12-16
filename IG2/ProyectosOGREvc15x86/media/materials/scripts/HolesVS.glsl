@@ -5,16 +5,16 @@ in vec3 normal;
 in vec2 uv0;
 
 uniform mat4 modelViewProjMat;      // matriz de transformacion
-out mat4 normalMat;             // matriz inversa (normales)
-out mat4 modelViewMat;
+uniform mat4 normalMat;             // matriz inversa (normales)
+uniform mat4 modelViewMat;
 
 out vec2 vUv0;                 // out del vertex shader
-
-
-out vec3 Normal;
+out vec3 viewVertex;
+out vec3 viewNormal;
 
 void main() {
-	Normal = mat3(normalMat)*normal;
+	viewVertex = vec3(modelViewMat * vertex);
+	viewNormal=normalize(vec3(normalMat* vec4(normal,0)));
     vUv0 = uv0;
 
 	gl_Position = modelViewProjMat * vertex; // obligatorio
