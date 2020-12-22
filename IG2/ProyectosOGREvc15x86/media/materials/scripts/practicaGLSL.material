@@ -1,47 +1,45 @@
 vertex_program SpaceVS glsl //nombre para el shader
 {
-source SpaceVS.glsl // nombre del archivo del código
-default_params // valores para las variable uniform
-{
-param_named_auto modelViewProjMat worldviewproj_matrix
-param_named_auto sinTime sintime_0_2pi 32
-
-
-}
+    source SpaceVS.glsl // nombre del archivo del código
+    default_params // valores para las variable uniform
+    {
+    param_named_auto modelViewProjMat worldviewproj_matrix
+    param_named_auto sinTime sintime_0_2pi 32
+    }
 }
 
 
 fragment_program SpaceFS glsl //nombre para el shader
 {
-source SpaceFS.glsl // nombre del archivo del código
-default_params // valores para las variable uniform
-{
-param_named textura1 int 0 // 1º unidad de textura ‐> *
-param_named textura2 int 1 // 2º unidad de textura ‐> *
-}
+    source SpaceFS.glsl // nombre del archivo del código
+    default_params // valores para las variable uniform
+    {
+    param_named textura1 int 0 // 1º unidad de textura ‐> *
+    param_named textura2 int 1 // 2º unidad de textura ‐> *
+    }
 }
 
 
 material practicaGLSL/spaceGLSL
 {
-technique {
-pass {
-vertex_program_ref SpaceVS 
-{ // params ‐> default_params
-}
-fragment_program_ref SpaceFS 
-{ // params ‐> default_params
-}
-texture_unit { // Texture unit 0
-texture lightMap.jpg 2d
- tex_address_mode wrap
-}
-texture_unit { // Texture unit 1
-texture spaceSky.jpg 2d
-filtering bilinear
-}
-}
-} 
+    technique {
+        pass {
+            vertex_program_ref SpaceVS 
+            { // params ‐> default_params
+            }
+            fragment_program_ref SpaceFS 
+            { // params ‐> default_params
+            }
+            texture_unit { // Texture unit 0
+            texture lightMap.jpg 2d
+            tex_address_mode wrap
+            }
+            texture_unit { // Texture unit 1
+            texture spaceSky.jpg 2d
+            filtering bilinear
+            }
+        }
+    } 
 }
 
 vertex_program HolesVS glsl
@@ -101,3 +99,77 @@ material practicaGLSL/Holes
          }
     }
 }  
+
+
+vertex_program RenderQuadVS glsl
+{
+    source HolesVS.glsl // podemos reutilizar
+    default_params{
+            param_named_auto     modelViewMat       worldview_matrix
+            param_named_auto    normalMat           transpose_worldview_matrix
+            param_named_auto    modelViewProjMat    worldviewproj_matrix   
+    }
+}
+
+
+fragment_program LuminanceFS glsl
+{
+    source LuminanceFS.glsl
+    default_params
+        {
+            param_named RTT0 int 0 // textura con la escena
+        }   
+}
+
+material practicaGLSL/LuminancePS 
+{
+    technique
+    {
+        pass 
+        {
+            depth_check off // desactivar el depth‐buffer
+            depth_write off
+            vertex_program_ref RenderQuadVS {}
+            fragment_program_ref LuminanceFS {}
+            texture_unit RTT0
+            {
+            // sin imagen de archivo ‐> previous render target
+            filtering none // tiene la resolución del viewport
+            tex_address_mode wrap
+            }
+        }
+    } 
+}
+
+
+
+fragment_program Kernel3x3PS glsl
+{
+    source Kernel3x3PS.glsl
+    default_params
+        {
+            param_named RTT0 int 0 // textura con la escena
+            param_named kernel float9 -4 -2 0 -2 1 2 0 2 4 //
+        }   
+}
+
+material practicaGLSL/EdgeEmbossPS 
+{
+    technique
+    {
+        pass 
+        {
+            depth_check off // desactivar el depth‐buffer
+            depth_write off
+            vertex_program_ref RenderQuadVS {}
+            fragment_program_ref Kernel3x3PS {
+            }
+            texture_unit RTT0
+            {
+            // sin imagen de archivo ‐> previous render target
+            filtering none // tiene la resolución del viewport
+            }
+        }
+    } 
+}
+

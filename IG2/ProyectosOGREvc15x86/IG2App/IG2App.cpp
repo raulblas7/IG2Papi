@@ -35,7 +35,28 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 	  Ficticio->yaw(Ogre::Degree(10))*/;
   }
- 
+  else if (evt.keysym.sym == SDLK_l)
+  {// si se pulsa l
+	  luminance = !luminance;
+	  if (!luminance) {             
+		  CompositorManager::getSingleton().setCompositorEnabled(vp, "Luminance", false);
+		
+	  }
+	  else {                           
+		  CompositorManager::getSingleton().setCompositorEnabled(vp, "Luminance", true);
+	  }
+  }
+  else if (evt.keysym.sym == SDLK_k)
+  {// si se pulsa k
+	  edgeEmboss = !edgeEmboss;
+	  if (!edgeEmboss) {
+		  CompositorManager::getSingleton().setCompositorEnabled(vp, "EdgeEmboss", false);
+
+	  }
+	  else {
+		  CompositorManager::getSingleton().setCompositorEnabled(vp, "EdgeEmboss", true);
+	  }
+  }
 
   return true;
 }
@@ -92,8 +113,9 @@ void IG2App::setupScene(void)
   //mCamNode->setDirection(Ogre::Vector3(0, 0, -1));  
   
   // and tell it to render into the main window
-  Viewport* vp = getRenderWindow()->addViewport(cam);
-  vp->setBackgroundColour(Ogre::ColourValue(0.0, 0.0, 0.0));
+  vp = getRenderWindow()->addViewport(cam);
+
+ // vp->setBackgroundColour(Ogre::ColourValue(0.0, 0.0, 0.0));
 
   //CAMARA REFLEJO
 
@@ -123,7 +145,7 @@ void IG2App::setupScene(void)
   mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
   //lightNode->setPosition(0, 0, 1000);
   //sombras
- // mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+  // mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
   //------------------------------------------------------------------------
 
   // finally something to render
@@ -257,6 +279,13 @@ void IG2App::setupScene(void)
 	planete->setReflejo(camRef);
 
 
+
+
+	CompositorManager::getSingleton().addCompositor(vp, "Luminance"); // añadimos composicion (efecto de postprocesado)
+	CompositorManager::getSingleton().addCompositor(vp, "EdgeEmboss"); // añadimos composicion (efecto de postprocesado)
+
+
+
 	planoMolNode = mSM->getRootSceneNode()->createChildSceneNode("planoMolino");
 
 	planeteMolino = new Plano(planoMolNode, 1);
@@ -310,7 +339,7 @@ void IG2App::setupScene(void)
   //mSinbadNode->showBoundingBox(true);
   //mSinbadNode->setVisible(false);
 
-  //------------------------------------------------------------------------
+	//------------------------------------------------------------------------
 
   mCamMgr = new OgreBites::CameraMan(mCamNode);
   addInputListener(mCamMgr);

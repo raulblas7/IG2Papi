@@ -6,6 +6,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
 #include <OgreCameraMan.h>
+#include <OgreCompositorManager.h>
 class Avion;
 class Molino;
 class Plano;
@@ -57,7 +58,9 @@ protected:
   Ogre::SceneNode* cabezaNode = nullptr;
   Ogre::SceneNode* boyaNode = nullptr;
   OgreBites::CameraMan* mCamMgr = nullptr;
-  
+  bool luminance = false;
+  bool edgeEmboss = false;
+  Ogre::Viewport* vp ;
 };
 
 #endif
