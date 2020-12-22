@@ -149,8 +149,7 @@ fragment_program Kernel3x3PS glsl
     default_params
         {
             param_named RTT0 int 0 // textura con la escena
-            param_named kernel float9 -4 -2 0 -2 1 2 0 2 4 //
-        }   
+            param_named kernel float9 0 0 0 0 1 0 0 0 0         }   
 }
 
 material practicaGLSL/EdgeEmbossPS 
@@ -163,6 +162,8 @@ material practicaGLSL/EdgeEmbossPS
             depth_write off
             vertex_program_ref RenderQuadVS {}
             fragment_program_ref Kernel3x3PS {
+            param_named kernel float9 -4 -2 0 -2 1 2 0 2 4 //
+
             }
             texture_unit RTT0
             {
