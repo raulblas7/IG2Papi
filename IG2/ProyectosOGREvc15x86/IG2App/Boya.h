@@ -52,5 +52,12 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {
 		animationState->addTime(evt.timeSinceLastFrame);
 	};
+	virtual void receiveEvent(MessageType message) {
+		if (message == MessageType::R) {
+
+			entBoya->setMaterialName("practicaGLSL/ExplotaGS");
+
+		}
+	}
 };
 

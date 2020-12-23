@@ -100,4 +100,184 @@ material practicaGLSL/Holes
         
          }
     }
+<<<<<<< Updated upstream
 }  
+=======
+}  
+
+
+vertex_program RenderQuadVS glsl
+{
+    source HolesVS.glsl // podemos reutilizar
+    default_params{
+            param_named_auto     modelViewMat       worldview_matrix
+            param_named_auto    normalMat           transpose_worldview_matrix
+            param_named_auto    modelViewProjMat    worldviewproj_matrix   
+    }
+}
+
+
+fragment_program LuminanceFS glsl
+{
+    source LuminanceFS.glsl
+    default_params
+        {
+            param_named RTT0 int 0 // textura con la escena
+        }   
+}
+
+material practicaGLSL/LuminancePS 
+{
+    technique
+    {
+        pass 
+        {
+            depth_check off // desactivar el depth‐buffer
+            depth_write off
+            vertex_program_ref RenderQuadVS {}
+            fragment_program_ref LuminanceFS {}
+            texture_unit RTT0
+            {
+            // sin imagen de archivo ‐> previous render target
+            filtering none // tiene la resolución del viewport
+            tex_address_mode wrap
+            }
+        }
+    } 
+}
+
+
+
+fragment_program Kernel3x3PS glsl
+{
+    source Kernel3x3PS.glsl
+    default_params
+        {
+            param_named RTT0 int 0 // textura con la escena
+            param_named kernel float9 0 0 0 0 1 0 0 0 0         }   
+}
+
+material practicaGLSL/EdgeEmbossPS 
+{
+    technique
+    {
+        pass 
+        {
+            depth_check off // desactivar el depth‐buffer
+            depth_write off
+            vertex_program_ref RenderQuadVS {}
+            fragment_program_ref Kernel3x3PS {
+            param_named kernel float9 -4 -2 0 -2 1 2 0 2 4 //
+
+            }
+            texture_unit RTT0
+            {
+            // sin imagen de archivo ‐> previous render target
+            filtering none // tiene la resolución del viewport
+            }
+        }
+    } 
+}
+
+
+
+
+vertex_program ExplotaVS glsl
+{
+    source ExplotaVS.glsl // podemos reutilizar
+    default_params{}
+}
+
+
+fragment_program ExplotaFS glsl
+{
+    source ExplotaFS.glsl
+    default_params{}   
+}
+
+
+
+geometry_program ExplotaGS glsl 
+{ // también para el GS
+    source ExplotaGS.glsl // archivo del Geometry Shader
+    input_operation_type triangles // tiene que coincidir con
+    output_operation_type triangle_strip // las declaraciones
+    max_output_vertices 3 // del Geometry shader
+    default_params 
+    { // para las uniform del shader
+    param_named_auto modelViewProjMat worldviewproj_matrix
+    param_named_auto time sintime_0_2pi 32
+    }
+ }
+
+material IG2/ExplotaGS
+{
+technique
+  { 
+  pass 
+    { 
+        cull_hardware none
+        cull_software none
+        vertex_program_ref ExplotaVS { }
+        fragment_program_ref ExplotaFS { }
+        geometry_program_ref ExplotaGS { } // también para el GS
+        texture_unit 
+            {
+                texture corrosion.jpg 2d // archivo
+                 tex_address_mode clamp
+            }
+            texture_unit 
+            {
+                texture BumpyMetal.jpg 2d // archivo
+                filtering bilinear  
+            }
+    }
+  } 
+}
+
+
+
+
+
+
+
+vertex_program NormalesVS glsl
+{
+    source NormalesVS.glsl // podemos reutilizar
+    default_params{}
+}
+
+
+fragment_program NormalesFS glsl
+{
+    source NormalesFS.glsl
+    default_params{}   
+}
+
+
+
+geometry_program NormalesGS glsl 
+{
+    source NormalesGS.glsl // archivo del Geometry Shader
+    input_operation_type triangles // tiene que coincidir con
+    output_operation_type line_strip // las declaraciones del
+    max_output_vertices 6 // Geometry shader
+   default_params 
+     { // para las uniform del shader
+     param_named_auto modelViewProjMat worldviewproj_matrix
+     }
+}
+
+material IG2/NormalesGS
+{
+technique 
+ {
+    pass
+    {
+        vertex_program_ref NormalesVS { }
+        fragment_program_ref NormalesFS { }
+        geometry_program_ref NormalesGS { } // también para el GS
+    }
+  }
+}
+>>>>>>> Stashed changes
