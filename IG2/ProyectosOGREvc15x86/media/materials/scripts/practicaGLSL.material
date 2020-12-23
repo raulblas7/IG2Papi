@@ -1,45 +1,47 @@
 vertex_program SpaceVS glsl //nombre para el shader
 {
-    source SpaceVS.glsl // nombre del archivo del código
-    default_params // valores para las variable uniform
-    {
-    param_named_auto modelViewProjMat worldviewproj_matrix
-    param_named_auto sinTime sintime_0_2pi 32
-    }
+source SpaceVS.glsl // nombre del archivo del código
+default_params // valores para las variable uniform
+{
+param_named_auto modelViewProjMat worldviewproj_matrix
+param_named_auto sinTime sintime_0_2pi 32
+
+
+}
 }
 
 
 fragment_program SpaceFS glsl //nombre para el shader
 {
-    source SpaceFS.glsl // nombre del archivo del código
-    default_params // valores para las variable uniform
-    {
-    param_named textura1 int 0 // 1º unidad de textura ‐> *
-    param_named textura2 int 1 // 2º unidad de textura ‐> *
-    }
+source SpaceFS.glsl // nombre del archivo del código
+default_params // valores para las variable uniform
+{
+param_named textura1 int 0 // 1º unidad de textura ‐> *
+param_named textura2 int 1 // 2º unidad de textura ‐> *
+}
 }
 
 
 material practicaGLSL/spaceGLSL
 {
-    technique {
-        pass {
-            vertex_program_ref SpaceVS 
-            { // params ‐> default_params
-            }
-            fragment_program_ref SpaceFS 
-            { // params ‐> default_params
-            }
-            texture_unit { // Texture unit 0
-            texture lightMap.jpg 2d
-            tex_address_mode wrap
-            }
-            texture_unit { // Texture unit 1
-            texture spaceSky.jpg 2d
-            filtering bilinear
-            }
-        }
-    } 
+technique {
+pass {
+vertex_program_ref SpaceVS 
+{ // params ‐> default_params
+}
+fragment_program_ref SpaceFS 
+{ // params ‐> default_params
+}
+texture_unit { // Texture unit 0
+texture lightMap.jpg 2d
+ tex_address_mode wrap
+}
+texture_unit { // Texture unit 1
+texture spaceSky.jpg 2d
+filtering bilinear
+}
+}
+} 
 }
 
 vertex_program HolesVS glsl
@@ -98,6 +100,9 @@ material practicaGLSL/Holes
         
          }
     }
+<<<<<<< Updated upstream
+}  
+=======
 }  
 
 
@@ -174,3 +179,105 @@ material practicaGLSL/EdgeEmbossPS
     } 
 }
 
+
+
+
+vertex_program ExplotaVS glsl
+{
+    source ExplotaVS.glsl // podemos reutilizar
+    default_params{}
+}
+
+
+fragment_program ExplotaFS glsl
+{
+    source ExplotaFS.glsl
+    default_params{}   
+}
+
+
+
+geometry_program ExplotaGS glsl 
+{ // también para el GS
+    source ExplotaGS.glsl // archivo del Geometry Shader
+    input_operation_type triangles // tiene que coincidir con
+    output_operation_type triangle_strip // las declaraciones
+    max_output_vertices 3 // del Geometry shader
+    default_params 
+    { // para las uniform del shader
+    param_named_auto modelViewProjMat worldviewproj_matrix
+    param_named_auto time sintime_0_2pi 32
+    }
+ }
+
+material IG2/ExplotaGS
+{
+technique
+  { 
+  pass 
+    { 
+        cull_hardware none
+        cull_software none
+        vertex_program_ref ExplotaVS { }
+        fragment_program_ref ExplotaFS { }
+        geometry_program_ref ExplotaGS { } // también para el GS
+        texture_unit 
+            {
+                texture corrosion.jpg 2d // archivo
+                 tex_address_mode clamp
+            }
+            texture_unit 
+            {
+                texture BumpyMetal.jpg 2d // archivo
+                filtering bilinear  
+            }
+    }
+  } 
+}
+
+
+
+
+
+
+
+vertex_program NormalesVS glsl
+{
+    source NormalesVS.glsl // podemos reutilizar
+    default_params{}
+}
+
+
+fragment_program NormalesFS glsl
+{
+    source NormalesFS.glsl
+    default_params{}   
+}
+
+
+
+geometry_program NormalesGS glsl 
+{
+    source NormalesGS.glsl // archivo del Geometry Shader
+    input_operation_type triangles // tiene que coincidir con
+    output_operation_type line_strip // las declaraciones del
+    max_output_vertices 6 // Geometry shader
+   default_params 
+     { // para las uniform del shader
+     param_named_auto modelViewProjMat worldviewproj_matrix
+     }
+}
+
+material IG2/NormalesGS
+{
+technique 
+ {
+    pass
+    {
+        vertex_program_ref NormalesVS { }
+        fragment_program_ref NormalesFS { }
+        geometry_program_ref NormalesGS { } // también para el GS
+    }
+  }
+}
+>>>>>>> Stashed changes
