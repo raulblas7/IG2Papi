@@ -136,7 +136,7 @@ void IG2App::setupScene(void)
   // without light we would just get a black screen 
   Light* luz = mSM->createLight("Luz");
   luz->setType(Ogre::Light::LT_DIRECTIONAL);
-  luz->setDiffuseColour(/*0.75*/ 1.0, /*0.75*/ 1.0,/* 0.75*/ 1.0);
+  luz->setDiffuseColour(/*0.75*/ 1, /*0.75*/ 1,/* 0.75*/ 1);
   luz->setCastShadows(false);
   mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
  // mLightNode = mCamNode->createChildSceneNode("nLuz");
@@ -330,6 +330,8 @@ void IG2App::setupScene(void)
 	boyete = new Boya(boyaNode);
 	
 	addInputListener(boyete);
+	EntidadIG::addListener(boyete);
+
 
 #pragma endregion
 

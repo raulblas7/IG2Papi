@@ -69,7 +69,7 @@ public:
 	virtual void receiveEvent(MessageType message) {
 		if (message == MessageType::R) {
 			moveAspas = false;
-			tech->setMaterialName("Practica1/rojo");
+			tech->setMaterialName("practicaGLSL/NormalesGS");
 		}
 	};
 

@@ -100,16 +100,14 @@ material practicaGLSL/Holes
         
          }
     }
-<<<<<<< Updated upstream
-}  
-=======
 }  
 
 
 vertex_program RenderQuadVS glsl
 {
     source HolesVS.glsl // podemos reutilizar
-    default_params{
+    default_params
+    {
             param_named_auto     modelViewMat       worldview_matrix
             param_named_auto    normalMat           transpose_worldview_matrix
             param_named_auto    modelViewProjMat    worldviewproj_matrix   
@@ -185,14 +183,31 @@ material practicaGLSL/EdgeEmbossPS
 vertex_program ExplotaVS glsl
 {
     source ExplotaVS.glsl // podemos reutilizar
-    default_params{}
+    default_params
+    {
+          param_named_auto modelViewMat worldview_matrix
+        param_named_auto normalMat transpose_worldview_matrix
+        param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+    
 }
 
 
 fragment_program ExplotaFS glsl
 {
     source ExplotaFS.glsl
-    default_params{}   
+    default_params
+    {
+         param_named textura1 int 0 // unidad de textura
+        param_named textura2 int 1 // unidad de textura
+        param_named_auto     Flipping       render_target_flipping
+
+         param_named_auto     lightPos           light_position              0 
+        param_named_auto     lightAmbient       ambient_light_colour 
+        param_named_auto     lightDiffuse       light_diffuse_colour        0
+        param_named          materialDiffuse    float3 0.6 0.6 0.6
+
+    }   
 }
 
 
@@ -207,10 +222,37 @@ geometry_program ExplotaGS glsl
     { // para las uniform del shader
     param_named_auto modelViewProjMat worldviewproj_matrix
     param_named_auto time sintime_0_2pi 32
+
+    
     }
  }
 
-material IG2/ExplotaGS
+material practicaGLSL/ExplotaGS
+{
+technique
+  { 
+  pass 
+    { 
+        cull_hardware none
+        cull_software none
+        vertex_program_ref ExplotaVS { }
+        fragment_program_ref ExplotaFS { }
+        geometry_program_ref ExplotaGS { } // también para el GS
+        texture_unit 
+            {
+                texture corrosion.jpg 2d // archivo
+                 tex_address_mode clamp
+            }
+            texture_unit 
+            {
+                texture BumpyMetal.jpg 2d // archivo
+                filtering bilinear  
+            }
+    }
+  } 
+}
+
+material practicaGLSL/Explota2GS
 {
 technique
   { 
@@ -239,8 +281,6 @@ technique
 
 
 
-
-
 vertex_program NormalesVS glsl
 {
     source NormalesVS.glsl // podemos reutilizar
@@ -264,11 +304,11 @@ geometry_program NormalesGS glsl
     max_output_vertices 6 // Geometry shader
    default_params 
      { // para las uniform del shader
-     param_named_auto modelViewProjMat worldviewproj_matrix
+       param_named_auto modelViewProjMat worldviewproj_matrix
      }
 }
 
-material IG2/NormalesGS
+material practicaGLSL/NormalesGS
 {
 technique 
  {
@@ -280,4 +320,3 @@ technique
     }
   }
 }
->>>>>>> Stashed changes
