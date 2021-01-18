@@ -55,6 +55,7 @@ public:
 
 	virtual void receiveEvent(MessageType message) {
 		if (message == MessageType::R) {
+			animationState->setEnabled(false);
 			entBoya->setMaterialName("practicaGLSL/Explota2GS");
 		}
 	}

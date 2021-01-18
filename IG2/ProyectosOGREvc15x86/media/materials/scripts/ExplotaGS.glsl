@@ -44,9 +44,15 @@ for (int i=0; i<3; ++i)
          viewVertexOut=viewVertex[i];
          viewNormalOut=viewNormal[i];
          
-        vec3 posDes = vertices[i] + dir * (VD*time);
+        vec3 posDes = vertices[i] + dir * (VD* (time* 0.8 + 0.75));
+
+        vec3 giro;
+        giro.x = posDes.x * (cos(time)) + posDes.z * (-sin(time));
+        giro.y = posDes.y;
+        giro.z = posDes.x * (sin(time)) + posDes.z * (cos(time));
+        
         // vértice desplazado (los 3 en la misma dirección)
-        gl_Position = modelViewProjMat * vec4(posDes,1.0);
+        gl_Position = modelViewProjMat * vec4(giro,1.0);
         // paso a Clip-Space
         EmitVertex(); // al no declarar ninguna variable out, los vertices del
         // triángulo emitido no llevan asociados atributos, solo las coordenadas
