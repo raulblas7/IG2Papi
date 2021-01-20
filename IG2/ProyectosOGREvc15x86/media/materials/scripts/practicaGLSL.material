@@ -50,7 +50,7 @@ vertex_program HolesVS glsl
     default_params // valores para las variables uniform
     {
         param_named_auto modelViewMat worldview_matrix
-        param_named_auto normalMat transpose_worldview_matrix
+        param_named_auto normalMat inverse_transpose_world_matrix
         param_named_auto modelViewProjMat worldviewproj_matrix
     }
 }
@@ -172,6 +172,7 @@ material practicaGLSL/EdgeEmbossPS
             {
             // sin imagen de archivo ‐> previous render target
             filtering none // tiene la resolución del viewport
+            tex_address_mode clamp
             }
         }
     } 
@@ -186,7 +187,7 @@ vertex_program ExplotaVS glsl
     default_params
     {
           param_named_auto modelViewMat worldview_matrix
-        param_named_auto normalMat transpose_worldview_matrix
+        param_named_auto normalMat inverse_transpose_world_matrix
         param_named_auto modelViewProjMat worldviewproj_matrix
     }
     

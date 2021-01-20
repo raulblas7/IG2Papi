@@ -39,17 +39,17 @@ vec3 vertices[3] = vec3[]
 vec3 dir = baricentro(vertices); // para los 3 vértices sacando el baricentro del triangulo
 for (int i=0; i<3; ++i)
     { // para emitir 3 vértices
+          vec3 posDes = vertices[i] + dir * (VD* (time* 0.8 + 0.75));
 
-         vUv0Out=vUv0[i];               
-         viewVertexOut=viewVertex[i];
-         viewNormalOut=viewNormal[i];
-         
-        vec3 posDes = vertices[i] + dir * (VD* (time* 0.8 + 0.75));
-
-        vec3 giro;
+          vec3 giro;
         giro.x = posDes.x * (cos(time)) + posDes.z * (-sin(time));
         giro.y = posDes.y;
         giro.z = posDes.x * (sin(time)) + posDes.z * (cos(time));
+
+         vUv0Out=vUv0[i];               
+         viewVertexOut=viewVertex[i];
+         viewNormalOut=normalize(giro);
+         
         
         // vértice desplazado (los 3 en la misma dirección)
         gl_Position = modelViewProjMat * vec4(giro,1.0);
